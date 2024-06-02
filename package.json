@@ -1,0 +1,12 @@
+{
+  "name": "next-hr-suite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jorgecarmona/next-hr-suite.git",
+  "author": "jc@carmonaweb.com <jc@carmonaweb.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
