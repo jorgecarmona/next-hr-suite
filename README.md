@@ -5,7 +5,7 @@
 Install yarn globally on your local environment. Required 1.22.18 or latest.
 
 ```
-npm install yarn
+npm install -g yarn
 ```
 
 Run bootstrap to install all dependencies
