@@ -1,3 +1,4 @@
-import BigNavButton from "./bignavbutton";
+import BigNavButton from './bignavbutton';
+import HeaderToolbar from './header-toolbar';
 
-export {BigNavButton};
+export {BigNavButton, HeaderToolbar};
