@@ -48,7 +48,7 @@ function Autocomplete({
         id={id}
         options={options}
         getOptionLabel={(option) => option.label}
-        style={{width: 300}}
+        // style={{width: '100%'}}
         inputValue={inputValue}
         onInputChange={(_, newInputValue) => {
           setInputValue(newInputValue);
