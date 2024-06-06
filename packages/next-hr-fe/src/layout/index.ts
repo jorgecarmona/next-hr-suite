@@ -1,3 +1,4 @@
+import LandingLayout from './landing-layout';
 import LoginLayout from './login-layout';
 
-export {LoginLayout};
+export {LandingLayout, LoginLayout};
