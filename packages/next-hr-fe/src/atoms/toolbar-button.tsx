@@ -7,7 +7,7 @@ function ToolbarButton({children, icon, onClick, selected}: ButtonProps) {
     : {padding: '8px 0'};
 
   return (
-    <span style={newStyles}>
+    <span style={newStyles} data-testid="spanStyle">
       <Button icon={icon} onClick={onClick} selected={selected}>
         {children}
       </Button>
