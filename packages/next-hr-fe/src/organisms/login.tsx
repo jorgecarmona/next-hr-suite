@@ -7,10 +7,13 @@ import Button, {ButtonType} from '../atoms/button';
 import Link from '../atoms/link';
 import useIsMobile from '../hooks/use-is-mobile';
 
-function Login() {
+interface LoginProps {
+  onLogin: (email: string, password: string) => void;
+}
+
+function Login({onLogin}: LoginProps) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [language, setLanguage] = React.useState('');
   const isMobile = useIsMobile();
 
   const handleEmailChange = (value: string) => {
@@ -21,14 +24,8 @@ function Login() {
     setPassword(value);
   };
 
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-  };
-
   const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Language:', language);
+    onLogin(email, password);
   };
 
   const cardStyles: React.CSSProperties = {
