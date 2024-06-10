@@ -1,54 +1,44 @@
 import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import {waitFor, within} from '@testing-library/react';
+
 import UserToolBar from '../../../molecules/usertoolbar';
-import {fireEvent} from '@testing-library/react';
-import {waitFor} from '@testing-library/react';
-
-interface IconProps {
-  name: string;
-  onClick?: () => void;
-}
-
-jest.mock('../../../atoms/avatar', () => () => <div>Avatar</div>);
-jest.mock('../../../atoms/icon', () => ({name, onClick}: IconProps) => (
-  <div onClick={onClick}>Icon: {name}</div>
-));
 
 describe('UserToolBar', () => {
-  it('renders without crashing', () => {
-    render(<UserToolBar>MR</UserToolBar>);
+  it('render open menu when clicking the avatar button', async () => {
+    render(<UserToolBar type="profile">MR</UserToolBar>);
+
+    const buttons = screen.getAllByRole('button');
+    await userEvent.click(buttons[3]);
+
+    const menu = await screen.findByRole('menu');
+    expect(menu).toBeVisible();
   });
 
-  test('renders UserToolBar with icons and avatar', () => {
-    render(<UserToolBar />);
+  it('render close menu when clicking the avatar button', async () => {
+    render(<UserToolBar type="profile">MR</UserToolBar>);
 
-    expect(screen.getByText('Icon: search')).toBeInTheDocument();
-    expect(screen.getByText('Icon: help')).toBeInTheDocument();
-    expect(screen.getByText('Icon: notifications')).toBeInTheDocument();
-    expect(screen.getByText('Avatar')).toBeInTheDocument();
-  });
+    const buttons = screen.getAllByRole('button');
 
-  test('handles icon click', () => {
-    console.log = jest.fn();
-    render(<UserToolBar />);
+    await userEvent.click(buttons[3]);
+    let menu = await screen.findByRole('menu');
+    expect(menu).toBeVisible();
 
-    fireEvent.click(screen.getByText('Icon: search'));
-    expect(console.log).toHaveBeenCalledWith('Hello World');
-  });
-
-  test('opens and closes menu on avatar click', async () => {
-    render(<UserToolBar />);
-
-    const avatarButton = screen.getByRole('button', {name: /avatar/i});
-    fireEvent.click(avatarButton);
-
-    expect(screen.getByText('Profile')).toBeInTheDocument();
-    expect(screen.getByText('My account')).toBeInTheDocument();
-    expect(screen.getByText('Logout')).toBeInTheDocument();
-
-    fireEvent.click(screen.getByText('Profile'));
+    const menuItems = within(menu).getAllByRole('menuitem');
+    userEvent.click(menuItems[0]);
 
     await waitFor(() => {
-      expect(screen.queryByText('Profile')).not.toBeInTheDocument();
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument();
     });
+  });
+
+  it('render call the console.log when the icon button is clicked', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    render(<UserToolBar type="profile">MR</UserToolBar>);
+    const buttons = screen.getAllByRole('button');
+
+    userEvent.click(buttons[0]);
+    expect(consoleSpy).toHaveBeenCalledWith('Hello World');
   });
 });

@@ -5,7 +5,7 @@ import {
   AvatarProps as MuiAvatarProps,
 } from '@mui/material';
 
-interface ProfileAvatarProps extends MuiAvatarProps {
+export interface ProfileAvatarProps extends MuiAvatarProps {
   alt?: never;
   children: React.ReactNode;
   height?: never;

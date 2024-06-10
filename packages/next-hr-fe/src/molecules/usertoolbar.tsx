@@ -1,15 +1,13 @@
 import React from 'react';
 
-import Avatar from '../atoms/avatar';
+import {Avatar, Button} from '../atoms';
 import Icon from '../atoms/icon';
 import {IconType} from '../atoms/icon-store';
-import {Fade, IconButton, Menu, MenuItem, Stack} from '@mui/material';
+import {ButtonType} from '../atoms/button';
+import {Menu, MenuItem} from '@mui/material';
+import {ProfileAvatarProps} from '../atoms/avatar';
 
-interface UserToolBarProps {
-  children?: React.ReactNode;
-}
-
-function UserToolBar({children}: UserToolBarProps) {
+function UserToolBar({children, type}: ProfileAvatarProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -26,35 +24,19 @@ function UserToolBar({children}: UserToolBarProps) {
   };
 
   return (
-    <Stack
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer',
-      }}
-      direction="row"
-      spacing={0.5}
-    >
-      <IconButton sx={{padding: '1px'}}>
-        <Icon
-          name={IconType.Search}
-          style={{opacity: 0.7}}
-          onClick={handleIconClick}
-        />
-      </IconButton>
-      <IconButton sx={{padding: '1px'}}>
-        <Icon name={IconType.Help} onClick={handleIconClick} />
-      </IconButton>
-      <IconButton sx={{padding: '1px'}}>
-        <Icon
-          name={IconType.Notifications}
-          hasNotifications
-          onClick={handleIconClick}
-        />
-      </IconButton>
-      <IconButton onClick={handleClick} sx={{padding: '1px'}}>
-        <Avatar type="profile">{children}</Avatar>
-      </IconButton>
+    <>
+      <Button buttonType={ButtonType.Profile} onClick={handleIconClick}>
+        <Icon name={IconType.Search} style={{opacity: 0.7}} />
+      </Button>
+      <Button buttonType={ButtonType.Profile} onClick={handleIconClick}>
+        <Icon name={IconType.Help} />
+      </Button>
+      <Button buttonType={ButtonType.Profile} onClick={handleIconClick}>
+        <Icon name={IconType.Notifications} hasNotifications />
+      </Button>
+      <Button buttonType={ButtonType.Profile} onClick={handleClick}>
+        <Avatar type={type}>{children}</Avatar>
+      </Button>
       <Menu
         id="fade-menu"
         MenuListProps={{
@@ -63,13 +45,12 @@ function UserToolBar({children}: UserToolBarProps) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        TransitionComponent={Fade}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
-    </Stack>
+    </>
   );
 }
 
