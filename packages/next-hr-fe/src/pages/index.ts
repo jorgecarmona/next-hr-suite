@@ -1,5 +1,5 @@
 import ApiPlayground from './api-playground';
-import Login from '../molecules/login';
+import LoginPage from './login-page';
 import PlayGround from './playground';
 
-export {ApiPlayground, Login, PlayGround};
+export {ApiPlayground, LoginPage, PlayGround};
