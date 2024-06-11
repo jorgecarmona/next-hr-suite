@@ -2,7 +2,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {waitFor, within} from '@testing-library/react';
 
-import UserToolBar from '../../../molecules/usertoolbar';
+import UserToolBar from '../../molecules/usertoolbar';
 
 describe('UserToolBar', () => {
   it('render open menu when clicking the avatar button', async () => {
