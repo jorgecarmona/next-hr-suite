@@ -63,6 +63,7 @@ describe('Icon', () => {
     render(<Icon name={IconType.Work} />);
 
     const iconElement = screen.getByTestId('name');
+
     expect(iconElement).toBeInTheDocument();
   });
 });
