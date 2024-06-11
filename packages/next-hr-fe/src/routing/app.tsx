@@ -6,6 +6,7 @@ import Loading from './loading';
 const ApiPlayground = lazy(() => import('../pages/api-playground'));
 const NotFoundPage = lazy(() => import('../pages/not-found'));
 const PlayGround = lazy(() => import('../pages/playground'));
+const Login = lazy(() => import('../organisms/login'));
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           {/* Add paths for project */}
           <Route path="/" element={<PlayGround />} />
           <Route path="/api-playground" element={<ApiPlayground />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
