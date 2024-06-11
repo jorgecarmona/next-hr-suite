@@ -19,8 +19,8 @@ describe('Icon', () => {
       },
     };
     render(<Icon name={IconType.Delete} {...props} />);
-    const iconElement = screen.getByTestId('name');
 
+    const iconElement = screen.getByTestId('name');
     expect(iconElement).not.toHaveStyle('borderRadius: 50%');
   });
 
