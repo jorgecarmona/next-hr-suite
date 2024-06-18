@@ -69,12 +69,8 @@ function LoginLayout({children}: LoginLayoutProps) {
   };
 
   const containerRight = {
-<<<<<<< HEAD
-    backgroundColor: palette.info.light,
-=======
     backgroundColor: palette.custom.light,
     height: '100%',
->>>>>>> 819c858c0ea4e69d04847af16789df7e7bce44d3
     position: 'relative',
   };
 
@@ -84,12 +80,9 @@ function LoginLayout({children}: LoginLayoutProps) {
   };
 
   const containerLogin = {
-<<<<<<< HEAD
-=======
     backgroundColor: palette.custom.contrastText,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     height: '589px',
->>>>>>> 819c858c0ea4e69d04847af16789df7e7bce44d3
     left: '50%',
     top: '50%',
     position: 'absolute',
