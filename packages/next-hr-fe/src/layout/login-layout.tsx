@@ -69,7 +69,8 @@ function LoginLayout({children}: LoginLayoutProps) {
   };
 
   const containerRight = {
-    backgroundColor: palette.info.light,
+    backgroundColor: palette.custom.light,
+    height: '100%',
     position: 'relative',
   };
 
@@ -79,6 +80,9 @@ function LoginLayout({children}: LoginLayoutProps) {
   };
 
   const containerLogin = {
+    backgroundColor: palette.custom.contrastText,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    height: '589px',
     left: '50%',
     top: '50%',
     position: 'absolute',
