@@ -6,8 +6,10 @@ import {LoginLayout} from '../layout';
 import Login from '../organisms/login';
 
 export default function LoginPage() {
-  const [login, {isLoading, error, data: loginData}] = useLoginMutation();
+  const [login, {isLoading}] = useLoginMutation();
   const [token, setToken] = React.useState('');
+
+  // TODO: HR-131 - Add a new non-api-slice to save token
 
   const handleLogin = async (email: string, password: string) => {
     try {
