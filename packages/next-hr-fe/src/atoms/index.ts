@@ -1,3 +1,4 @@
+import Alert from './alert';
 import Autocomplete from './autocomplete';
 import Avatar from './avatar';
 import BreadCrumbs from './breadcrumbs';
@@ -13,6 +14,7 @@ import ToolbarButton from './toolbar-button';
 import Typography from './typography';
 
 export {
+  Alert,
   Autocomplete,
   Avatar,
   BreadCrumbs,
