@@ -1,5 +1,5 @@
 import React from 'react';
-import {Autocomplete} from '../atoms';
+import {Alert, Autocomplete} from '../atoms';
 import Typography from '../atoms/typography';
 import TextField from '../atoms/textField';
 import PasswordTextField from '../atoms/password-textfield';
@@ -9,9 +9,10 @@ import useIsMobile from '../hooks/use-is-mobile';
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
+  severity?: React.ReactNode;
 }
 
-function Login({onLogin}: LoginProps) {
+function Login({onLogin, severity}: LoginProps) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const isMobile = useIsMobile();
@@ -29,7 +30,7 @@ function Login({onLogin}: LoginProps) {
   };
 
   const cardStyles: React.CSSProperties = {
-    width: isMobile ? '334px' : '448px',
+    height: '100%',
     padding: '48px 24px',
     display: 'flex',
     flexDirection: 'column',
@@ -38,7 +39,6 @@ function Login({onLogin}: LoginProps) {
     backgroundColor: '#fff',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     borderRadius: '8px',
-    margin: '101px 32px',
   };
 
   const contentStyles: React.CSSProperties = {
@@ -76,6 +76,11 @@ function Login({onLogin}: LoginProps) {
         <div style={{width: 'fit-content', margin: 'auto'}}>
           <Typography variant="h1">Welcome back!</Typography>
         </div>
+        {severity && (
+          <div>
+            <Alert severity="error">{severity}</Alert>
+          </div>
+        )}
         <div style={fieldContainerStyles}>
           <div style={{marginBottom: '8px'}}>
             <TextField

@@ -1,34 +1,35 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {useLoginMutation} from '../store/api-slice/auth-slice';
+import {setToken} from '../store/non-api-slice/auth-slice';
 
 import {LoginLayout} from '../layout';
 import Login from '../organisms/login';
 
 export default function LoginPage() {
   const [login, {isLoading}] = useLoginMutation();
-  const [token, setToken] = React.useState('');
-
-  // TODO: HR-131 - Add a new non-api-slice to save token
+  const dispatch = useDispatch();
+  const [error, setError] = React.useState('');
 
   const handleLogin = async (email: string, password: string) => {
+    setError('');
     try {
       const result = await login({
         email,
         password,
       }).unwrap();
 
-      setToken(result.token);
-      console.log(result.token);
+      dispatch(setToken(result.token));
     } catch (err) {
-      console.error('Login failed:', err);
+      setError('You have entered an invalid username or password');
     }
   };
 
   return (
     <>
       <LoginLayout>
-        <Login onLogin={handleLogin} />
+        <Login onLogin={handleLogin} severity={error} />
       </LoginLayout>
     </>
   );
