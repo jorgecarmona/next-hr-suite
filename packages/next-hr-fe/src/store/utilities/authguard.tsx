@@ -1,8 +1,8 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {Navigate} from 'react-router-dom';
 
 interface AuthGuardProps {
-  children: ReactNode;
+  children?: React.ReactNode;
 }
 
 function AuthGuard({children}: AuthGuardProps) {

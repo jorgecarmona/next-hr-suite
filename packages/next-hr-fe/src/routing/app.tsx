@@ -18,22 +18,10 @@ function App() {
           <Route path="/api-playground" element={<ApiPlayground />} />
           <Route path="/*" element={<NotFoundPage />} />
 
-          <Route
-            path="/"
-            element={
-              <AuthGuard>
-                <PlayGround />
-              </AuthGuard>
-            }
-          />
-          <Route
-            path="/api-playground"
-            element={
-              <AuthGuard>
-                <ApiPlayground />
-              </AuthGuard>
-            }
-          />
+          <AuthGuard>
+            <Route path="/" element={<PlayGround />} />
+            <Route path="/api-playground" element={<ApiPlayground />} />
+          </AuthGuard>
         </Routes>
       </Suspense>
     </Router>
