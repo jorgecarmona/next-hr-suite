@@ -6,7 +6,11 @@ import UserToolBar from '../../molecules/usertoolbar';
 
 describe('UserToolBar', () => {
   it('render open menu when clicking the avatar button', async () => {
-    render(<UserToolBar type="profile">MR</UserToolBar>);
+    render(
+      <UserToolBar onClickCallback={() => {}} type="profile">
+        MR
+      </UserToolBar>,
+    );
 
     const buttons = screen.getAllByRole('button');
     await userEvent.click(buttons[3]);
@@ -16,7 +20,11 @@ describe('UserToolBar', () => {
   });
 
   it('render close menu when clicking the avatar button', async () => {
-    render(<UserToolBar type="profile">MR</UserToolBar>);
+    render(
+      <UserToolBar onClickCallback={() => {}} type="profile">
+        MR
+      </UserToolBar>,
+    );
 
     const buttons = screen.getAllByRole('button');
 
@@ -35,7 +43,11 @@ describe('UserToolBar', () => {
   it('render call the console.log when the icon button is clicked', () => {
     const consoleSpy = jest.spyOn(console, 'log');
 
-    render(<UserToolBar type="profile">MR</UserToolBar>);
+    render(
+      <UserToolBar onClickCallback={() => {}} type="profile">
+        MR
+      </UserToolBar>,
+    );
     const buttons = screen.getAllByRole('button');
 
     userEvent.click(buttons[0]);
