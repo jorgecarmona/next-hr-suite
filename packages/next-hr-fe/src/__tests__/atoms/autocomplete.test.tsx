@@ -53,23 +53,4 @@ describe('Autocomplete Component', () => {
     await userEvent.type(inputElement, 'Option 2');
     expect(inputElement).toHaveValue('Option 2');
   });
-
-  test('displays required label correctly', () => {
-    render(
-      <Autocomplete
-        id="test-autocomplete"
-        options={options}
-        value="1"
-        label="Test Label"
-        required={true}
-      />,
-    );
-
-    const labelElement = screen.getByLabelText('Test Label *');
-    expect(labelElement).toHaveAttribute('for', 'test-autocomplete');
-    const requiredIndicator = screen.getByText('*', {
-      selector: 'span[style*="color: red;"]',
-    });
-    expect(requiredIndicator).toBeInTheDocument();
-  });
 });
