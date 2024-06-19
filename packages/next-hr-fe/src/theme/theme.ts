@@ -20,8 +20,6 @@ const nextHrTheme = createTheme({
       paper: '#FCFCFD',
       title: '#1570EF',
       subtitle: '#344054',
-    },
-    info: {
       main: '#FFFFFF',
       light: '#F0F9FF',
       contrastText: '#FFFFFF',
