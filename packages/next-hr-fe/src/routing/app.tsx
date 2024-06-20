@@ -14,14 +14,12 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Routes>
           {/* Add paths for project */}
-          <Route path="/" element={<PlayGround />} />
-          <Route path="/api-playground" element={<ApiPlayground />} />
           <Route path="/*" element={<NotFoundPage />} />
 
-          <AuthGuard>
+          <Route element={<AuthGuard />}>
             <Route path="/" element={<PlayGround />} />
             <Route path="/api-playground" element={<ApiPlayground />} />
-          </AuthGuard>
+          </Route>
         </Routes>
       </Suspense>
     </Router>
