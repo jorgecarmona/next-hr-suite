@@ -23,6 +23,7 @@ const nextHrTheme = createTheme({
       main: '#FFFFFF',
       light: '#F0F9FF',
       contrastText: '#FFFFFF',
+      content: '#667085',
     },
   },
   typography: {
