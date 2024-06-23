@@ -1,15 +1,16 @@
-import React from 'react';
-
-import {useGetUsersQuery} from '../store/api-slice/users-slice';
+import {Outlet} from 'react-router-dom';
+import Header from '../organisms/header';
 
 function PlayGround() {
-  const {data} = useGetUsersQuery();
-
-  console.log(data);
+  // const {data} = useGetUsersQuery();
 
   return (
     <>
-      <h1>PlayGround !!!</h1>
+      {/* <h1>PlayGround</h1> */}
+      <hr />
+      <Header />
+      <hr />
+      <Outlet />
     </>
   );
 }
