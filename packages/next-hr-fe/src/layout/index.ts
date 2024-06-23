@@ -1,3 +1,4 @@
+import HomePage from './homepage-layout';
 import LoginLayout from './login-layout';
 
-export {LoginLayout};
+export {HomePage, LoginLayout};
