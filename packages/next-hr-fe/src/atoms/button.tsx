@@ -13,6 +13,7 @@ export enum ButtonType {
   Outlined = 'outlined',
   Text = 'text',
   Tertiary = 'tertiary',
+  Profile = 'profile',
 }
 
 export interface ButtonProps extends Omit<MuiButtonProps, 'color' | 'variant'> {
@@ -21,7 +22,7 @@ export interface ButtonProps extends Omit<MuiButtonProps, 'color' | 'variant'> {
   disabled?: boolean;
   fullWidth?: boolean;
   icon?: IconType;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   selected?: boolean;
 }
 
@@ -49,6 +50,10 @@ function Button({
       buttonVariant = buttonType;
       break;
 
+    case ButtonType.Profile:
+      buttonVariant = 'text';
+      break;
+
     default:
       buttonVariant = 'text';
   }
@@ -57,6 +62,10 @@ function Button({
 
   if (buttonType === ButtonType.Tertiary) {
     className += 'tertiary';
+  }
+
+  if (buttonType === ButtonType.Profile) {
+    className += 'profile';
   }
 
   if (selected) {

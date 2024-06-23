@@ -54,6 +54,12 @@ const nextHrTheme = createTheme({
               backgroundColor: '#D0E7FF',
             },
           },
+          '&.profile': {
+            color: '#FFF',
+            '&:hover': {
+              backgroundColor: '#FFF',
+            },
+          },
           '&.selected': {
             color: '#1849A9',
             fontWeight: 500,
