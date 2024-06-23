@@ -82,12 +82,13 @@ function LoginLayout() {
   const containerLogin = {
     backgroundColor: palette.custom.contrastText,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    height: '589px',
     left: '50%',
     position: 'absolute',
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '448px',
+    width: 'fit-content',
+    height: 'fit-content',
+    padding: '20px',
     zIndex: '1',
   };
 
