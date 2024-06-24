@@ -1,21 +1,48 @@
+import React from 'react';
+
 import Stack from '@mui/material/Stack';
+
+import {useNavigate} from 'react-router-dom';
 
 import {Button} from '../atoms';
 import {ButtonType} from '../atoms/button';
 import {IconType} from '../atoms/icon-store';
 
-interface ToolbarItem {
+interface ToolbarButton {
   icon: IconType;
   text: string;
 }
 
-interface ToolbarProps {
-  items: ToolbarItem[];
-  onClick: (arg: string) => void;
-  selectedItem: string;
-}
+const headerButtons = [
+  {
+    icon: IconType.Work,
+    text: 'My Requests',
+  },
+  {
+    icon: IconType.Library,
+    text: 'Learn More',
+  },
+  {
+    icon: IconType.Add,
+    text: 'Submit New Request',
+  },
+];
 
-function HeaderToolbar({items, onClick, selectedItem}: ToolbarProps) {
+function HeaderToolbar() {
+  const [selectedButton, setSelectedButton] = React.useState<string>('');
+  const navigate = useNavigate();
+
+  let navigateTo: string;
+
+  const handleSelectedButton = (value: string) => {
+    setSelectedButton(value);
+
+    if (value.includes(' ')) {
+      navigateTo = value.replaceAll(' ', '-');
+    }
+    navigate(navigateTo);
+  };
+
   return (
     <Stack direction="row" spacing={2}>
       <span
@@ -28,19 +55,19 @@ function HeaderToolbar({items, onClick, selectedItem}: ToolbarProps) {
       >
         |
       </span>
-      {items.map((item: ToolbarItem, index: number) => (
+      {headerButtons.map((button: ToolbarButton, index: number) => (
         <Button
           buttonType={
-            selectedItem === item.text.toLowerCase()
+            selectedButton === button.text.toLowerCase()
               ? ButtonType.Tertiary
               : undefined
           }
-          icon={item.icon}
+          icon={button.icon}
           key={index}
-          onClick={() => onClick(item.text.toLowerCase())}
-          selected={selectedItem === item.text.toLowerCase()}
+          onClick={() => handleSelectedButton(button.text.toLowerCase())}
+          selected={selectedButton === button.text.toLowerCase()}
         >
-          {item.text}
+          {button.text}
         </Button>
       ))}
     </Stack>
