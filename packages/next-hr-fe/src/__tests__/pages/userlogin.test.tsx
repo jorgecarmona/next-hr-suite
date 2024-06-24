@@ -1,7 +1,7 @@
 import {render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
-import {LoginPage} from '../../pages';
+import {UserLogin} from '../../pages';
 import {useLoginMutation} from '../../store/api-slice/auth-slice';
 import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
@@ -33,12 +33,12 @@ const renderWithProviders = () => {
 
   render(
     <Provider store={store}>
-      <LoginPage />
+      <UserLogin />
     </Provider>,
   );
 };
 
-describe.only('LoginPage', () => {
+describe.only('UserLogin', () => {
   const mockLogin = jest.fn();
 
   beforeEach(() => {
@@ -52,7 +52,7 @@ describe.only('LoginPage', () => {
     jest.clearAllMocks();
   });
 
-  test('renders the login page', () => {
+  test('renders the UserLogin', () => {
     renderWithProviders();
 
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
@@ -90,7 +90,7 @@ describe.only('LoginPage', () => {
     });
   });
 
-  // TODO: HR-138 - [BUG] Fix unit test on login-page
+  // TODO: HR-138 - [BUG] Fix unit test on UserLogin
   test('handles login failure', async () => {
     // mockLogin.mockRejectedValue(new Error('Invalid credentials'));
     renderWithProviders();

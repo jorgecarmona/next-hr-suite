@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Loading from './loading';
 import AuthGuard from '../store/utilities/authguard';
 import {UserLogin} from '../pages';
-import SignUpPage from '../pages/signup-page';
+import {AccountSignUp} from '../pages';
 
 const ApiPlayground = lazy(() => import('../pages/api-playground'));
 const NotFoundPage = lazy(() => import('../pages/not-found'));
@@ -21,7 +21,7 @@ function App() {
             <Route path="/api-playground" element={<ApiPlayground />} />
           </Route>
           <Route path="/userlogin" element={<UserLogin />} />
-          <Route path="/SignUp" element={<SignUpPage />} />
+          <Route path="/accountsignup" element={<AccountSignUp />} />
           <Route path="/api-playground" element={<ApiPlayground />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
