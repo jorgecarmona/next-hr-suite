@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Login from '../../pages/login';
+import {Login} from '../../organisms';
 import useIsMobile from '../../hooks/use-is-mobile';
 
 jest.mock('../../hooks/use-is-mobile');
@@ -11,8 +11,10 @@ describe('Login Component', () => {
     (useIsMobile as jest.Mock).mockReturnValue(false);
   });
 
+  const mockOnLogin = jest.fn();
+
   it('renders the component correctly', () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     expect(screen.getByText('Welcome back!')).toBeInTheDocument();
     expect(
@@ -24,7 +26,7 @@ describe('Login Component', () => {
   });
 
   it('updates email state on input change', async () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const emailInput = screen.getByPlaceholderText('Enter your email here');
     await userEvent.type(emailInput, 'test');
@@ -33,7 +35,7 @@ describe('Login Component', () => {
   });
 
   it('updates password state on input change', async () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const passwordInput = screen.getByLabelText(/Password/i, {
       selector: 'input',
@@ -44,7 +46,7 @@ describe('Login Component', () => {
   });
 
   it('updates language state on input change', async () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const languageDropdown = screen.getByRole('combobox');
     await userEvent.click(languageDropdown);
@@ -56,7 +58,7 @@ describe('Login Component', () => {
   });
 
   it('enables login button when email and password are provided', async () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const loginButton = screen.getByRole('button', {name: /login/i});
     expect(loginButton).toBeDisabled();
@@ -73,8 +75,7 @@ describe('Login Component', () => {
   });
 
   it('logs email, password, and language on login button click', async () => {
-    console.log = jest.fn();
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const emailInput = screen.getByPlaceholderText('Enter your email here');
     await userEvent.type(emailInput, 'test');
@@ -93,13 +94,12 @@ describe('Login Component', () => {
     const loginButton = screen.getByRole('button', {name: /login/i});
     await userEvent.click(loginButton);
 
-    expect(console.log).toHaveBeenCalledWith('Email:', 'test');
-    expect(console.log).toHaveBeenCalledWith('Password:', 'test');
+    expect(mockOnLogin).toHaveBeenCalledWith('test', 'test');
   });
 
   it('renders correctly in mobile view', () => {
     (useIsMobile as jest.Mock).mockReturnValue(true);
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     expect(screen.getByText('Welcome back!')).toBeInTheDocument();
     expect(
@@ -113,7 +113,7 @@ describe('Login Component', () => {
   });
 
   it('disables login button when email or password is empty', async () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     const loginButton = screen.getByRole('button', {name: /login/i});
     expect(loginButton).toBeDisabled();
@@ -133,7 +133,7 @@ describe('Login Component', () => {
   });
 
   it('displays sign-up and forgot password links in desktop view', () => {
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     expect(screen.getByText('Sign up')).toBeInTheDocument();
     expect(screen.getByText('Forgot Password?')).toBeInTheDocument();
@@ -141,7 +141,7 @@ describe('Login Component', () => {
 
   it('displays sign-up and forgot password links in mobile view', () => {
     (useIsMobile as jest.Mock).mockReturnValue(true);
-    render(<Login />);
+    render(<Login onLogin={mockOnLogin} />);
 
     expect(screen.getByText('Sign up')).toBeInTheDocument();
     expect(screen.getByText('Forgot Password?')).toBeInTheDocument();
