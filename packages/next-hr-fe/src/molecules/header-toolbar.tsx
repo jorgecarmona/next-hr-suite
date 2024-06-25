@@ -8,39 +8,21 @@ import {Button} from '../atoms';
 import {ButtonType} from '../atoms/button';
 import {IconType} from '../atoms/icon-store';
 
-interface ToolbarButton {
-  icon: IconType;
-  text: string;
+interface HeaderToolbarProps {
+  config: {
+    icon: IconType;
+    text: string;
+    path: string;
+  }[];
 }
 
-const headerButtons = [
-  {
-    icon: IconType.Work,
-    text: 'My Requests',
-  },
-  {
-    icon: IconType.Library,
-    text: 'Learn More',
-  },
-  {
-    icon: IconType.Add,
-    text: 'Submit New Request',
-  },
-];
-
-function HeaderToolbar() {
+function HeaderToolbar({config}: HeaderToolbarProps) {
   const [selectedButton, setSelectedButton] = React.useState<string>('');
   const navigate = useNavigate();
 
-  let navigateTo: string;
-
-  const handleSelectedButton = (value: string) => {
-    setSelectedButton(value);
-
-    if (value.includes(' ')) {
-      navigateTo = value.replaceAll(' ', '-');
-    }
-    navigate(navigateTo);
+  const handleSelectedButton = (text: string, path: string) => {
+    setSelectedButton(text);
+    navigate(path);
   };
 
   return (
@@ -55,7 +37,7 @@ function HeaderToolbar() {
       >
         |
       </span>
-      {headerButtons.map((button: ToolbarButton, index: number) => (
+      {config.map((button, index) => (
         <Button
           buttonType={
             selectedButton === button.text.toLowerCase()
@@ -64,7 +46,9 @@ function HeaderToolbar() {
           }
           icon={button.icon}
           key={index}
-          onClick={() => handleSelectedButton(button.text.toLowerCase())}
+          onClick={() =>
+            handleSelectedButton(button.text.toLowerCase(), button.path)
+          }
           selected={selectedButton === button.text.toLowerCase()}
         >
           {button.text}

@@ -1,23 +1,42 @@
 import {render, screen, waitFor} from '@testing-library/react';
-import {HeaderToolbar} from '../../molecules';
-
 import userEvent from '@testing-library/user-event';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {MemoryRouter} from 'react-router-dom';
+
+import {HeaderToolbar} from '../../molecules';
+import {IconType} from '../../atoms/icon-store';
+
+const headerButtons = [
+  {
+    icon: IconType.Work,
+    text: 'My Requests',
+    path: 'my-requests',
+  },
+  {
+    icon: IconType.Library,
+    text: 'Learn More',
+    path: 'learn-more',
+  },
+  {
+    icon: IconType.Add,
+    text: 'Submit New Request',
+    path: 'new-request',
+  },
+];
 
 describe('HeaderToolbar Component', () => {
   it('renders without problems', () => {
     render(
-      <Router>
-        <HeaderToolbar />
-      </Router>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
   });
 
   it('renders a list of buttons', () => {
     render(
-      <Router>
-        <HeaderToolbar />
-      </Router>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
 
     const button1 = screen.getByRole('button', {name: /my requests/i});
@@ -32,9 +51,9 @@ describe('HeaderToolbar Component', () => {
 
   it('renders one of the buttons in selected state', async () => {
     render(
-      <Router>
-        <HeaderToolbar />
-      </Router>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
 
     const button = screen.getByRole('button', {name: /learn more/i});
