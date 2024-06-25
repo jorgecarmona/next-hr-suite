@@ -1,4 +1,4 @@
-import type {Meta} from '@storybook/react';
+import {Meta} from '@storybook/react';
 import {MemoryRouter} from 'react-router-dom';
 
 import {HeaderToolbar} from '../../molecules';
@@ -22,14 +22,14 @@ const headerButtons = [
   },
 ];
 
-const meta: Meta<typeof HeaderToolbar> = {
+const meta = {
   title: 'Molecules/HeaderToolbar',
   component: HeaderToolbar,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-};
+} satisfies Meta<typeof HeaderToolbar>;
 
 export default meta;
 
