@@ -1,46 +1,42 @@
-import {render, screen} from '@testing-library/react';
-import {HeaderToolbar} from '../../molecules';
+import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import {MemoryRouter} from 'react-router-dom';
 
+import {HeaderToolbar} from '../../molecules';
 import {IconType} from '../../atoms/icon-store';
 
-const callBack = jest.fn();
-
-const buttons = [
+const headerButtons = [
   {
-    icon: IconType.Business,
+    icon: IconType.Work,
     text: 'My Requests',
+    path: 'my-requests',
   },
   {
     icon: IconType.Library,
     text: 'Learn More',
+    path: 'learn-more',
   },
   {
     icon: IconType.Add,
     text: 'Submit New Request',
+    path: 'new-request',
   },
 ];
 
 describe('HeaderToolbar Component', () => {
-  it('renders a button', () => {
+  it('renders without problems', () => {
     render(
-      <HeaderToolbar
-        items={[{icon: IconType.Add, text: 'More'}]}
-        onClick={callBack}
-        selectedItem=""
-      ></HeaderToolbar>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
-
-    const button = screen.getByRole('button', {name: /more/i});
-    expect(button).toBeInTheDocument();
   });
 
   it('renders a list of buttons', () => {
     render(
-      <HeaderToolbar
-        items={buttons}
-        onClick={callBack}
-        selectedItem=""
-      ></HeaderToolbar>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
 
     const button1 = screen.getByRole('button', {name: /my requests/i});
@@ -53,22 +49,19 @@ describe('HeaderToolbar Component', () => {
     expect(button3).toBeInTheDocument();
   });
 
-  it('renders a list with a button selected', () => {
+  it('renders one of the buttons in selected state', async () => {
     render(
-      <HeaderToolbar
-        items={buttons}
-        onClick={callBack}
-        selectedItem="learn more"
-      ></HeaderToolbar>,
+      <MemoryRouter>
+        <HeaderToolbar config={headerButtons} />
+      </MemoryRouter>,
     );
 
-    const button1 = screen.getByRole('button', {name: /my requests/i});
-    expect(button1).toBeInTheDocument();
+    const button = screen.getByRole('button', {name: /learn more/i});
+    userEvent.click(button);
 
-    const button2 = screen.getByRole('button', {name: /learn more/i});
-    expect(button2).toHaveClass('tertiary ');
-
-    const button3 = screen.getByRole('button', {name: /submit new request/i});
-    expect(button3).toBeInTheDocument();
+    await waitFor(() => {
+      expect(button).toHaveClass('tertiary');
+      expect(button).toHaveClass('selected');
+    });
   });
 });
