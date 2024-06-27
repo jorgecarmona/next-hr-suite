@@ -8,7 +8,7 @@ import {Button} from '../atoms';
 import {ButtonType} from '../atoms/button';
 import {IconType} from '../atoms/icon-store';
 
-interface HeaderToolbarProps {
+export interface HeaderToolbarProps {
   config: {
     icon: IconType;
     text: string;
