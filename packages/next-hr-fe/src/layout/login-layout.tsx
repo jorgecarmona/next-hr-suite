@@ -79,15 +79,17 @@ function LoginLayout({children}: LoginLayoutProps) {
     position: 'relative',
   };
 
-  const containerLogin: React.CSSProperties = {
+  const containerLogin = {
     backgroundColor: palette.custom.contrastText,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    height: '589px',
     left: '50%',
     top: '50%',
     position: 'absolute',
     transform: 'translate(-50%, -50%)',
+    width: 'fit-content',
+    height: 'fit-content',
+    padding: '20px',
+    zIndex: '1',
   };
 
   if (isMobile) {

@@ -1,21 +1,30 @@
+import React from 'react';
+
 import Stack from '@mui/material/Stack';
+
+import {useNavigate} from 'react-router-dom';
 
 import {Button} from '../atoms';
 import {ButtonType} from '../atoms/button';
 import {IconType} from '../atoms/icon-store';
 
-interface ToolbarItem {
-  icon: IconType;
-  text: string;
+interface HeaderToolbarProps {
+  config: {
+    icon: IconType;
+    text: string;
+    path: string;
+  }[];
 }
 
-interface ToolbarProps {
-  items: ToolbarItem[];
-  onClick: (arg: string) => void;
-  selectedItem: string;
-}
+function HeaderToolbar({config}: HeaderToolbarProps) {
+  const [selectedButton, setSelectedButton] = React.useState<string>('');
+  const navigate = useNavigate();
 
-function HeaderToolbar({items, onClick, selectedItem}: ToolbarProps) {
+  const handleSelectedButton = (text: string, path: string) => {
+    setSelectedButton(text);
+    navigate(path);
+  };
+
   return (
     <Stack direction="row" spacing={2}>
       <span
@@ -28,19 +37,21 @@ function HeaderToolbar({items, onClick, selectedItem}: ToolbarProps) {
       >
         |
       </span>
-      {items.map((item: ToolbarItem, index: number) => (
+      {config.map((button, index) => (
         <Button
           buttonType={
-            selectedItem === item.text.toLowerCase()
+            selectedButton === button.text.toLowerCase()
               ? ButtonType.Tertiary
               : undefined
           }
-          icon={item.icon}
+          icon={button.icon}
           key={index}
-          onClick={() => onClick(item.text.toLowerCase())}
-          selected={selectedItem === item.text.toLowerCase()}
+          onClick={() =>
+            handleSelectedButton(button.text.toLowerCase(), button.path)
+          }
+          selected={selectedButton === button.text.toLowerCase()}
         >
-          {item.text}
+          {button.text}
         </Button>
       ))}
     </Stack>

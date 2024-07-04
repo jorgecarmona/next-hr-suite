@@ -1,23 +1,24 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {action} from '@storybook/addon-actions';
-import {fn} from '@storybook/test';
+import {Meta} from '@storybook/react';
+import {MemoryRouter} from 'react-router-dom';
 
 import {HeaderToolbar} from '../../molecules';
-
 import {IconType} from '../../atoms/icon-store';
 
-const listOfButtons = [
+const headerButtons = [
   {
-    icon: IconType.Business,
+    icon: IconType.Work,
     text: 'My Requests',
+    path: 'my-requests',
   },
   {
     icon: IconType.Library,
     text: 'Learn More',
+    path: 'learn-more',
   },
   {
     icon: IconType.Add,
     text: 'Submit New Request',
+    path: 'new-request',
   },
 ];
 
@@ -32,16 +33,10 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
 export function ListOfButtons() {
-  return <HeaderToolbar items={listOfButtons} onClick={fn()} selectedItem="" />;
+  return (
+    <MemoryRouter>
+      <HeaderToolbar config={headerButtons} />
+    </MemoryRouter>
+  );
 }
-
-export const ListWithOneButtonSelected: Story = {
-  args: {
-    items: listOfButtons,
-    onClick: action('button was clicked') as any,
-    selectedItem: 'submit new request',
-  },
-};
