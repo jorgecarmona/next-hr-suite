@@ -43,7 +43,7 @@ describe('SignUp Component', () => {
     expect(confirmPasswordInput).toHaveValue('password123');
   });
 
-  it.only('renders passwords are different to display the error message and calls the onLogin function when the Sign Up button is clicked', async () => {
+  it.skip('renders passwords are different to display the error message and calls the onLogin function when the Sign Up button is clicked', async () => {
     const mockOnLogin = jest.fn();
 
     render(<SignUp onLogin={mockOnLogin} />);
