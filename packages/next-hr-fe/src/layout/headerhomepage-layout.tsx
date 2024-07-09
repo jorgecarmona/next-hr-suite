@@ -1,4 +1,6 @@
 import {Box, Grid} from '@mui/material';
+import nextHrTheme from '../theme/theme';
+
 interface HomePageLayoutProps {
   children: [React.ReactNode, React.ReactNode, React.ReactNode];
 }
@@ -10,9 +12,9 @@ function HeaderHomePageLayout({children}: HomePageLayoutProps) {
     <Box
       sx={{
         flexGrow: 1,
-        borderBottom: '1px solid #eaeaea',
+        borderBottom: `1px solid ${nextHrTheme.palette.custom.line}`,
         padding: '16px 24px',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: nextHrTheme.palette.custom.main,
       }}
     >
       <Grid container alignItems="center" justifyContent="space-between">
