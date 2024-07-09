@@ -9,7 +9,6 @@ declare module '@mui/material/styles' {
       paper: string;
       title: string;
       subtitle: string;
-      content: string;
     };
   }
   interface PaletteOptions {
@@ -21,7 +20,6 @@ declare module '@mui/material/styles' {
       paper?: string;
       title?: string;
       subtitle?: string;
-      content?: string;
     };
   }
 }

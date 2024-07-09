@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import {BigNavButton} from '../../molecules';
-import {IconType} from '../../atoms/icon-store';
+import {BigNavButton} from '../../../molecules';
+import {IconType} from '../../../atoms/icon-store';
 
 describe('BigNavButton', () => {
   it('renders without crashing', () => {
