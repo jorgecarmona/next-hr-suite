@@ -11,15 +11,14 @@ import logo from '../assets/images/logo.svg';
 import avatarFamily from '../assets/images/avatar-family.svg';
 import avatarFather from '../assets/images/avatar-father.svg';
 
-interface LoginLayoutProps {
-  children: React.ReactNode;
-}
-
-function LoginLayout({children}: LoginLayoutProps) {
+function LoginLayout() {
   const isMobile = useIsMobile();
   const {palette} = nextHrTheme;
 
   const mobileStyles = {
+    backgroundColor: palette.info.main,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    height: '96vh',
     marginTop: '82px',
     width: '100%',
   };
@@ -76,27 +75,36 @@ function LoginLayout({children}: LoginLayoutProps) {
 
   const containerLeft = {
     backgroundColor: palette.custom.paper,
+    height: '100%',
     position: 'relative',
   };
 
   const containerLogin = {
     backgroundColor: palette.custom.contrastText,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    height: '589px',
     left: '50%',
-    top: '50%',
     position: 'absolute',
+    top: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 'fit-content',
-    height: 'fit-content',
-    padding: '20px',
+    width: '448px',
     zIndex: '1',
   };
+
+  const containerLoginMobile = {
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    height: '96vh',
+    marginTop: '82px',
+    width: '100%',
+  };
+
+  const loginContainer = (style: {}) => <Box sx={style} />;
 
   if (isMobile) {
     return (
       <Box p={1.6875} style={mobileStyles}>
         <Box sx={mobileLogo} />
-        <Grid>{children}</Grid>
+        {loginContainer(containerLoginMobile)}
       </Box>
     );
   }
@@ -112,7 +120,7 @@ function LoginLayout({children}: LoginLayoutProps) {
           <Box sx={imageRight} />
         </Grid>
       </Grid>
-      <Grid sx={containerLogin}>{children}</Grid>
+      {loginContainer(containerLogin)}
     </Box>
   );
 }

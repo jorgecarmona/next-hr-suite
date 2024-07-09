@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import {ButtonsToolbar} from '../../molecules';
-import {IconType} from '../../atoms/icon-store';
+import {ButtonsToolbar} from '../../../molecules';
+import {IconType} from '../../../atoms/icon-store';
 
 const callBack = jest.fn();
 
