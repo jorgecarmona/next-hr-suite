@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Avatar as MuiAvatar,
   AvatarProps as MuiAvatarProps,
@@ -35,7 +34,7 @@ function Avatar({
   src,
   type,
   width = 400,
-}: AvatarProps) {
+}: AvatarProps): JSX.Element {
   const sxProps = type === 'profile' ? {} : {width, height};
   const classname = type === 'profile' ? 'profile' : '';
 
