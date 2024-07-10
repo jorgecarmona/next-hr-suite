@@ -1,7 +1,8 @@
-import React from 'react';
 import {render, screen} from '@testing-library/react';
+
 import '@testing-library/jest-dom/extend-expect';
-import Avatar from '../../atoms/avatar'; // Ajusta la ruta según la ubicación de tu componente
+
+import Avatar from '../../atoms/avatar';
 
 describe('Avatar Component', () => {
   test('renders ProfileAvatar with children', () => {
