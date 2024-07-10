@@ -10,6 +10,12 @@ const meta = {
   },
   tags: ['autodocs'],
   args: {
+    label: '',
+    value: '',
+    fullWidth: true,
+    onChangeTextField: (value: string) => {
+      console.log('TextField entered:', value);
+    },
     error: false,
     helperText: '',
     icon: false,
