@@ -9,6 +9,13 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    error: false,
+    fullWidth: false,
+    icon: true,
+    required: true,
+    errorHelperText: '',
+  },
 } satisfies Meta<typeof PasswordTextField>;
 
 export default meta;
