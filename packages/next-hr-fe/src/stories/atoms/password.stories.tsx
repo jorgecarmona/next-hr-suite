@@ -10,11 +10,17 @@ const meta = {
   },
   tags: ['autodocs'],
   args: {
+    label: '',
+    value: '',
+    helperText: '',
+    onChangeCallback: (value: string) => {
+      console.log('passeord entered:', value);
+    },
     error: false,
+    errorHelperText: '',
     fullWidth: false,
     icon: true,
     required: true,
-    errorHelperText: '',
   },
 } satisfies Meta<typeof PasswordTextField>;
 
