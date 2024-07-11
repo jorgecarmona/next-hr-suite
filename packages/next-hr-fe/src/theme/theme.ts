@@ -23,6 +23,7 @@ const nextHrTheme = createTheme({
       main: '#FFFFFF',
       light: '#F0F9FF',
       contrastText: '#FFFFFF',
+      content: '#667085',
     },
   },
   typography: {
@@ -51,6 +52,12 @@ const nextHrTheme = createTheme({
             color: '#1849A9',
             '&:hover': {
               backgroundColor: '#D0E7FF',
+            },
+          },
+          '&.profile': {
+            color: '#FFF',
+            '&:hover': {
+              backgroundColor: '#FFF',
             },
           },
           '&.selected': {

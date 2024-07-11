@@ -1,5 +1,5 @@
 import React from 'react';
-import {Autocomplete} from '../atoms';
+import {Alert, Autocomplete} from '../atoms';
 import Typography from '../atoms/typography';
 import TextField from '../atoms/textField';
 import PasswordTextField from '../atoms/password-textfield';
@@ -7,32 +7,29 @@ import Button, {ButtonType} from '../atoms/button';
 import Link from '../atoms/link';
 import useIsMobile from '../hooks/use-is-mobile';
 
-function Login() {
+interface LoginProps {
+  onLogin: (email: string, password: string) => void;
+  severity?: React.ReactNode;
+}
+
+function Login({onLogin, severity}: LoginProps) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [language, setLanguage] = React.useState('');
   const isMobile = useIsMobile();
 
   const handleEmailChange = (value: string) => {
     setEmail(value);
   };
-
   const handlePasswordChange = (value: string) => {
     setPassword(value);
   };
 
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-  };
-
   const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Language:', language);
+    onLogin(email, password);
   };
 
   const cardStyles: React.CSSProperties = {
-    width: isMobile ? '334px' : '448px',
+    height: '100%',
     padding: '48px 24px',
     display: 'flex',
     flexDirection: 'column',
@@ -41,7 +38,6 @@ function Login() {
     backgroundColor: '#fff',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     borderRadius: '8px',
-    margin: '101px 32px',
   };
 
   const contentStyles: React.CSSProperties = {
@@ -50,13 +46,11 @@ function Login() {
     gap: '16px',
     width: '100%',
   };
-
   const fieldContainerStyles: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
   };
-
   const linkContainerStyles: React.CSSProperties = {
     fontSize: '0.875rem',
     textAlign: 'center',
@@ -65,20 +59,22 @@ function Login() {
     justifyContent: 'center',
     gap: isMobile ? '8px' : '16px',
   };
-
   const linkStyles: React.CSSProperties = {
     fontSize: '0.875rem',
     textAlign: 'center',
   };
-
   const isLoginEnabled = email !== '' && password !== '';
-
   return (
     <div style={cardStyles}>
       <div style={contentStyles}>
         <div style={{width: 'fit-content', margin: 'auto'}}>
           <Typography variant="h1">Welcome back!</Typography>
         </div>
+        {severity && (
+          <div>
+            <Alert severity="error">{severity}</Alert>
+          </div>
+        )}
         <div style={fieldContainerStyles}>
           <div style={{marginBottom: '8px'}}>
             <TextField
@@ -150,5 +146,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
