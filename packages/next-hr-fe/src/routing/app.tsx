@@ -20,8 +20,8 @@ function App() {
             <Route path="/" element={<PlayGround />} />
             <Route path="/api-playground" element={<ApiPlayground />} />
           </Route>
-          <Route path="/userlogin" element={<UserLogin />} />
-          <Route path="/accountsignup" element={<AccountSignUp />} />
+          <Route path="/user-login" element={<UserLogin />} />
+          <Route path="/account-signup" element={<AccountSignUp />} />
           <Route path="/api-playground" element={<ApiPlayground />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
