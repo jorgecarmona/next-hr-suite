@@ -9,6 +9,7 @@ import {AccountSignUp} from '../pages';
 const ApiPlayground = lazy(() => import('../pages/api-playground'));
 const NotFoundPage = lazy(() => import('../pages/not-found'));
 const PlayGround = lazy(() => import('../pages/playground'));
+
 function App() {
   return (
     <Router>
@@ -29,4 +30,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

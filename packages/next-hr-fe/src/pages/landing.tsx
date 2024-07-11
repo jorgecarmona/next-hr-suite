@@ -1,5 +1,5 @@
 import {Avatar, Typography} from '../atoms';
-import {BigNavButton} from '../molecules';
+import BigNavButton from '../molecules/bignavbutton';
 import {Grid} from '@mui/material';
 import {IconType} from '../atoms/icon-store';
 import {useGetUsersQuery} from '../store/api-slice/users-slice';
