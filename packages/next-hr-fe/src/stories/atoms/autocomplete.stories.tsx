@@ -23,7 +23,7 @@ export default {
 
 export const Default: Story = {
   args: {
-    value: 'English',
+    value: '',
     options: [
       {label: 'English', value: 'english'},
       {label: 'Spanish', value: 'spanish'},

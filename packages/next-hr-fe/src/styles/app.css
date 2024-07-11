@@ -77,3 +77,8 @@
   top: 26px;
   width: 163.11px;
 }
+
+.required-field::after {
+  content: ' *';
+  color: red;
+}

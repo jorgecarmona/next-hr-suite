@@ -5,6 +5,8 @@ import {
   InputLabel,
   TextField,
 } from '@mui/material';
+
+import '../styles/app.css';
 interface OptionType {
   label: string;
   value: string;
@@ -13,7 +15,6 @@ interface AutocompleteProps {
   error?: boolean;
   errorHelperText?: string;
   helperText?: string;
-  id: string;
   label?: string;
   options: OptionType[];
   required?: boolean;
@@ -24,7 +25,6 @@ function Autocomplete({
   error,
   errorHelperText,
   helperText,
-  id,
   label,
   options,
   required,
@@ -39,13 +39,15 @@ function Autocomplete({
   }
 
   return (
-    <>
-      <InputLabel required={false} style={{paddingLeft: '10px'}}>
-        {label} {required && <span style={{color: 'red'}}>*</span>}
+    <div style={{display: 'flex', flexDirection: 'column'}}>
+      <InputLabel
+        htmlFor="AutoComplete"
+        className={required ? 'required-field' : undefined}
+      >
+        {label}
       </InputLabel>
       <MuiAutocomplete
         size="small"
-        id={id}
         options={options}
         getOptionLabel={(option) => option.label}
         inputValue={inputValue}
@@ -53,15 +55,17 @@ function Autocomplete({
           setInputValue(newInputValue);
         }}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            helperText={newHelperText}
-            error={Boolean(error)}
-            variant="outlined"
-          />
+          <div style={{width: '300px'}}>
+            <TextField
+              {...params}
+              helperText={newHelperText}
+              error={Boolean(error)}
+              variant="outlined"
+            />
+          </div>
         )}
       />
-    </>
+    </div>
   );
 }
 
