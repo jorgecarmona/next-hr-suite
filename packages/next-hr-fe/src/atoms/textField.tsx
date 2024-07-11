@@ -38,7 +38,7 @@ function TextField({
     if (icon) {
       return (
         <InputAdornment position="start">
-          <IconButton edge="start">{<iconLookup.email />}</IconButton>
+          <iconLookup.email />
         </InputAdornment>
       );
     }
