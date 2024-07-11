@@ -1,5 +1,7 @@
+import AccountSignUp from './account-signup';
 import ApiPlayground from './api-playground';
-import UserLogin from './userlogin';
+import Landing from './landing';
+import UserLogin from './user-login';
 import PlayGround from './playground';
 
-export {ApiPlayground, PlayGround, UserLogin};
+export {AccountSignUp, ApiPlayground, Landing, PlayGround, UserLogin};

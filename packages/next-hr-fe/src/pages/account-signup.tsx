@@ -7,7 +7,7 @@ import {setToken} from '../store/non-api-slice/auth-slice';
 import {LoginLayout} from '../layout';
 import {SignUp} from '../organisms';
 
-export default function SignUpPage() {
+export default function AccountSignUp() {
   const [login, {isLoading}] = useLoginMutation();
   const dispatch = useDispatch();
   const [error, setError] = React.useState('');

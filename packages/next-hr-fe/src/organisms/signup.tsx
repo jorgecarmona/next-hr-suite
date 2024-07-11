@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Button, {ButtonType} from '../atoms/button';
-import {FormHelperText} from '@mui/material';
 import Link from '../atoms/link';
 import PasswordTextField from '../atoms/password-textfield';
 import TextField from '../atoms/textField';
