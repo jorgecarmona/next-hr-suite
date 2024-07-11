@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Login from '../../organisms/login';
+import {Login} from '../../organisms';
 import useIsMobile from '../../hooks/use-is-mobile';
 
 jest.mock('../../hooks/use-is-mobile');

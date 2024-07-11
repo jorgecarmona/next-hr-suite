@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import BigNavButton from '../../molecules/bignavbutton';
+import {BigNavButton} from '../../molecules';
 import {IconType} from '../../atoms/icon-store';
 
 describe('BigNavButton', () => {

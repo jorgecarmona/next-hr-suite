@@ -5,7 +5,7 @@ import {useLoginMutation} from '../store/api-slice/auth-slice';
 import {setToken} from '../store/non-api-slice/auth-slice';
 
 import {LoginLayout} from '../layout';
-import SignUp from '../organisms/signup';
+import {SignUp} from '../organisms';
 
 export default function AccountSignUp() {
   const [login, {isLoading}] = useLoginMutation();

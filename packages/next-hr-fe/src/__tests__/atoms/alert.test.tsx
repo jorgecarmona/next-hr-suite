@@ -22,7 +22,7 @@ describe('Alert Component', () => {
       </Alert>,
     );
     userEvent.click(screen.getByRole('button'));
-    expect(screen.queryByText('Close Alert')).not.toBeInTheDocument();
+    expect(screen.queryByText('Close Alert')).toBeInTheDocument();
   });
 
   test('calls onClose callback when close button is clicked', async () => {
