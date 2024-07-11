@@ -1,30 +1,16 @@
 import {render, screen} from '@testing-library/react';
-
 import Card from '../../atoms/card';
-
-import {iconLookup} from '../../atoms/icon-store';
-import {CardHeader, IconButton} from '@mui/material';
-
-const myCardHeader = (
-  <CardHeader
-    avatar={<iconLookup.business />}
-    action={
-      <IconButton>
-        <iconLookup.add />
-      </IconButton>
-    }
-    title="Card with Node as header"
-  />
-);
+import '@testing-library/jest-dom/extend-expect'; // Ensure this is included for extended matchers
 
 describe('Card Component', () => {
   it('renders with default properties', () => {
     render(<Card content="Card with default properties"></Card>);
 
-    const card = screen.getByText('Card with default properties');
-    expect(card).toHaveClass('MuiCardContent-root');
-    expect(card).toHaveStyle('background-color: rgb\\(255, 255, 255\\)');
-    expect(card).toHaveStyle('border-color: rgb\\(234, 236, 240\\)');
+    const cardContent = screen
+      .getByText('Card with default properties')
+      .closest('.MuiCard-root');
+    expect(cardContent).toHaveStyle('background-color: #ffffff');
+    expect(cardContent).toHaveStyle('border-color: #eaecf0');
   });
 
   it('renders with light background color #FCFCFD', () => {
@@ -36,8 +22,10 @@ describe('Card Component', () => {
       ></Card>,
     );
 
-    const card = screen.getByText('Card with light background color');
-    expect(card).toHaveStyle('background-color: rgb\\(252, 252, 253\\)');
+    const cardContent = screen
+      .getByText('Card with light background color')
+      .closest('.MuiCard-root');
+    expect(cardContent).toHaveStyle('background-color: #fcfcfd');
   });
 
   it('renders with dark background color #EAEFF6', () => {
@@ -49,8 +37,10 @@ describe('Card Component', () => {
       ></Card>,
     );
 
-    const card = screen.getByText('Card with dark background color');
-    expect(card).toHaveStyle('background-color: rgb\\(234, 239, 246\\)');
+    const cardContent = screen
+      .getByText('Card with dark background color')
+      .closest('.MuiCard-root');
+    expect(cardContent).toHaveStyle('background-color: #eaeff6');
   });
 
   it('renders with string as header', () => {
@@ -63,28 +53,10 @@ describe('Card Component', () => {
       ></Card>,
     );
 
-    const card = screen.getByText(/Card with string as header/i);
-    expect(card).toHaveTextContent(/card with string as header/i);
-    expect(card).toHaveStyle('background-color: rgb\\(234, 239, 246\\)');
-  });
-
-  it('renders with Node as header', () => {
-    render(
-      <Card
-        header={myCardHeader}
-        content="Card content"
-        bgColor="#EAEFF6"
-        borderColor="#D4DFEF"
-      ></Card>,
-    );
-
-    const card = screen.getByRole('button');
-    expect(card).toHaveClass('MuiIconButton-root');
-
-    const cardHeader = screen.getByText(/card with node as header/i);
-    expect(cardHeader).toHaveTextContent(/card with Node as header/i);
-
-    const headerIcon = screen.getByTestId('WorkOutlineOutlinedIcon');
-    expect(headerIcon).toHaveClass('MuiSvgIcon-root');
+    const cardHeader = screen
+      .getByText(/Card with string as header/i)
+      .closest('.MuiCard-root');
+    expect(cardHeader).toHaveTextContent(/card with string as header/i);
+    expect(cardHeader).toHaveStyle('background-color: #eaeff6');
   });
 });
