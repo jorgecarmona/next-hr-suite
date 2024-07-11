@@ -1,6 +1,6 @@
 # next-hr-suite
 
-## First Steps
+## First Steps to install
 
 Install yarn globally on your local environment. Required 1.22.18 or latest.
 
