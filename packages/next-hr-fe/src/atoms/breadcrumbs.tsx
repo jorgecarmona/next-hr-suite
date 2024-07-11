@@ -44,7 +44,11 @@ function BreadCrumbs({separator = '>', items, onClick}: BreadcrumbProps) {
             href={isLast ? undefined : item.path ?? '#'}
             underline="hover"
             color="inherit"
-            style={isLast ? {pointerEvents: 'none', cursor: 'default'} : {}}
+            style={
+              isLast
+                ? {pointerEvents: 'none', cursor: 'default', fontWeight: 'bold'}
+                : {}
+            }
           >
             {item.label}
           </Link>
