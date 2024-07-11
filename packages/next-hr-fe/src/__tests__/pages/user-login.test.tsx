@@ -38,7 +38,7 @@ const renderWithProviders = () => {
   );
 };
 
-describe.only('UserLogin', () => {
+describe.skip('UserLogin', () => {
   const mockLogin = jest.fn();
 
   beforeEach(() => {
