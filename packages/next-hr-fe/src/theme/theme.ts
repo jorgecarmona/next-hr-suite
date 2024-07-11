@@ -160,6 +160,7 @@ const nextHrTheme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
+          cursor: 'pointer',
           fontFamily: 'Poppins',
           fontWeightMedium: 400,
           fontSize: '16px',

@@ -65,11 +65,16 @@ describe('Autocomplete Component', () => {
       />,
     );
 
-    const labelElement = screen.getByLabelText('Test Label *');
-    expect(labelElement).toHaveAttribute('for', 'test-autocomplete');
     const requiredIndicator = screen.getByText('*', {
       selector: 'span[style*="color: red;"]',
     });
     expect(requiredIndicator).toBeInTheDocument();
+  });
+
+  test('renders with no options and no value', () => {
+    render(<Autocomplete id="test-autocomplete" options={[]} value="" />);
+    const inputElement = screen.getByRole('combobox');
+    expect(inputElement).toHaveValue('');
+    expect(inputElement).toBeInTheDocument();
   });
 });

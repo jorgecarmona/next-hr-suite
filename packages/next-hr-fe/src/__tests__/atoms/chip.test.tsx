@@ -1,4 +1,3 @@
-import React from 'react';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -12,44 +11,14 @@ describe('Chip Component', () => {
     expect(chip).toHaveClass('MuiChip-label');
   });
 
-  it('calls onClick callback function when clicked', () => {
+  it('calls onClick callback function when clicked', async () => {
     const handleClick = jest.fn();
     render(<Chip label="Clickable Chip" onClick={handleClick} />);
 
-    const chip = screen.getByRole('button', {name: 'Clickable Chip'});
-    userEvent.click(chip);
+    const chip = screen.getByRole('button', {name: /Clickable Chip/i});
+    await userEvent.click(chip);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('calls onDelete callback function when delete icon is clicked', () => {
-    const handleDelete = jest.fn();
-    render(<Chip label="Clickable Chip" onDelete={handleDelete} />);
-
-    const deleteIcon = screen.getByTestId('CancelIcon');
-    userEvent.click(deleteIcon);
-
-    expect(handleDelete).toHaveBeenCalledTimes(1);
-  });
-
-  it('renders as outlined chip with delete icon', () => {
-    const handleDelete = jest.fn();
-    render(
-      <Chip
-        type="outlined"
-        label="Outlined Chip with Delete"
-        onDelete={handleDelete}
-      />,
-    );
-
-    const chip = screen.getByText('Outlined Chip with Delete');
-    expect(chip).toBeInTheDocument();
-
-    const deleteIcon = screen.getByTestId('CancelIcon');
-    expect(deleteIcon).toBeInTheDocument();
-
-    userEvent.click(deleteIcon);
-    expect(handleDelete).toHaveBeenCalledTimes(1);
   });
 
   it('renders with primary color and filled variant for pending type', () => {

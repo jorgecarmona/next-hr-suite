@@ -1,12 +1,8 @@
 import React from 'react';
-
 import {Box, Grid} from '@mui/material';
-
 import useIsMobile from '../hooks/use-is-mobile';
 import nextHrTheme from '../theme/theme';
-
 import '../styles/app.css';
-
 import logo from '../assets/images/logo.svg';
 import avatarFamily from '../assets/images/avatar-family.svg';
 import avatarFather from '../assets/images/avatar-father.svg';
@@ -22,7 +18,6 @@ function LoginLayout() {
     marginTop: '82px',
     width: '100%',
   };
-
   const mobileLogo = {
     backgroundImage: `url(${logo})`,
     backgroundRepeat: 'no-repeat',
@@ -33,7 +28,6 @@ function LoginLayout() {
     top: '26px',
     width: '163.11px',
   };
-
   const desktopLogo = {
     backgroundImage: `url(${logo})`,
     backgroundRepeat: 'no-repeat',
@@ -44,7 +38,6 @@ function LoginLayout() {
     top: '20px',
     width: '163.11px',
   };
-
   const imageRight = {
     backgroundImage: `url(${avatarFamily})`,
     backgroundPosition: 'center',
@@ -55,7 +48,6 @@ function LoginLayout() {
     right: '20px',
     width: '50%',
   };
-
   const imageLeft = {
     backgroundImage: `url(${avatarFather})`,
     backgroundPosition: 'center',
@@ -66,7 +58,6 @@ function LoginLayout() {
     position: 'absolute',
     width: '50%',
   };
-
   const containerRight = {
     backgroundColor: palette.custom.light,
     height: '100%',
@@ -79,9 +70,10 @@ function LoginLayout() {
     position: 'relative',
   };
 
-  const containerLogin = {
+  const containerLogin: React.CSSProperties = {
     backgroundColor: palette.custom.contrastText,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
     height: '589px',
     left: '50%',
     position: 'absolute',
@@ -108,7 +100,6 @@ function LoginLayout() {
       </Box>
     );
   }
-
   return (
     <Box sx={{position: 'relative', height: '100vh', width: '100vw'}}>
       <Grid container sx={{height: '100%', width: '100%'}}>
@@ -124,5 +115,4 @@ function LoginLayout() {
     </Box>
   );
 }
-
 export default LoginLayout;

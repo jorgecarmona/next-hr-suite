@@ -1,10 +1,10 @@
 import {Avatar, Typography} from '../atoms';
-import {BigNavButton} from '../molecules';
+import BigNavButton from '../molecules/bignavbutton';
 import {Grid} from '@mui/material';
-import LandingLayout from '../layout/landing-layout';
 import {IconType} from '../atoms/icon-store';
-
 import {useGetUsersQuery} from '../store/api-slice/users-slice';
+
+import LandingLayout from '../layout/landing-layout';
 
 import AvatarFriends from '../assets/images/avatar-friends.svg';
 

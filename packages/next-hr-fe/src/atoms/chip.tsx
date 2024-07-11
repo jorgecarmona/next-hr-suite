@@ -16,7 +16,6 @@ interface ChipProps
   extends Omit<MuiChipProps, 'color' | 'onDelete' | 'onClick'> {
   label: string;
   onClick?: () => void;
-  // onDelete?: () => void;
   type?: ChipType;
 }
 
@@ -47,7 +46,6 @@ function Chip({label, onClick, type = 'default', ...rest}: ChipProps) {
       color={color}
       label={label}
       onClick={onClick}
-      // onDelete={onDelete}
       variant={variant}
       {...rest}
     />
