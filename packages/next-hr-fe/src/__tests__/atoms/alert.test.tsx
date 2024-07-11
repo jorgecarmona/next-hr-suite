@@ -1,38 +1,69 @@
-import {render, screen} from '@testing-library/react';
-
-import userEvent from '@testing-library/user-event';
-
+import React from 'react';
+import {render, screen, fireEvent, cleanup} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import Alert from '../../atoms/alert';
 
-describe('Alert Component', () => {
-  test('renders Alert with children', () => {
-    render(<Alert severity="info">Test Alert</Alert>);
-    expect(screen.getByText('Test Alert')).toBeInTheDocument();
+afterEach(cleanup);
+
+describe('Alert component', () => {
+  it('renders the correct title and message for each alert type', () => {
+    const alertTypes: Array<'error' | 'info' | 'success' | 'warning'> = [
+      'error',
+      'info',
+      'success',
+      'warning',
+    ];
+
+    alertTypes.forEach((type) => {
+      render(<Alert type={type}>Test {type} message</Alert>);
+      expect(
+        screen.getByText(type.charAt(0).toUpperCase() + type.slice(1)),
+      ).toBeInTheDocument();
+      expect(screen.getByText(`Test ${type} message`)).toBeInTheDocument();
+      cleanup();
+    });
   });
 
-  test('renders correct title based on severity', () => {
-    render(<Alert severity="info">Info Alert</Alert>);
-    expect(screen.getByText('Info')).toBeInTheDocument();
+  it('closes the alert when the close button is clicked', () => {
+    render(<Alert type="error">Test error message</Alert>);
+
+    expect(screen.getByText('Error')).toBeInTheDocument();
+    expect(screen.getByText('Test error message')).toBeInTheDocument();
+
+    const closeButton = screen.getByRole('button');
+    fireEvent.click(closeButton);
+
+    expect(screen.queryByText('Error')).not.toBeInTheDocument();
+    expect(screen.queryByText('Test error message')).not.toBeInTheDocument();
   });
 
-  test('closes Alert when close button is clicked', async () => {
+  it('calls the onClose callback when the alert is closed', () => {
+    const onCloseMock = jest.fn();
     render(
-      <Alert severity="info" onClose={() => {}}>
-        Close Alert
+      <Alert type="info" onClose={onCloseMock}>
+        Test info message
       </Alert>,
     );
-    userEvent.click(screen.getByRole('button'));
-    expect(screen.queryByText('Close Alert')).not.toBeInTheDocument();
+
+    const closeButton = screen.getByRole('button');
+    fireEvent.click(closeButton);
+
+    expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 
-  test('calls onClose callback when close button is clicked', async () => {
-    const onClose = jest.fn();
-    render(
-      <Alert severity="info" onClose={onClose}>
-        Callback Alert
-      </Alert>,
+  it('does not render anything when open state is false', () => {
+    const {rerender} = render(
+      <Alert type="success">Test success message</Alert>,
     );
-    userEvent.click(screen.getByRole('button'));
-    expect(onClose).toHaveBeenCalledTimes(1);
+
+    expect(screen.getByText('Success')).toBeInTheDocument();
+    expect(screen.getByText('Test success message')).toBeInTheDocument();
+
+    rerender(<Alert type="success">Test success message</Alert>);
+    const closeButton = screen.getByRole('button');
+    fireEvent.click(closeButton);
+
+    expect(screen.queryByText('Success')).not.toBeInTheDocument();
+    expect(screen.queryByText('Test success message')).not.toBeInTheDocument();
   });
 });

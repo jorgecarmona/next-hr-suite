@@ -2,27 +2,52 @@ import {Meta, StoryObj} from '@storybook/react';
 
 import Alert from '../../atoms/alert';
 
-const meta: Meta = {
+type AlertProps = {
+  type: 'error' | 'info' | 'success' | 'warning';
+  children: React.ReactNode;
+};
+
+const meta: Meta<AlertProps> = {
   title: 'Atoms/Alert',
   component: Alert,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['error', 'info', 'success', 'warning'],
+    },
+  },
 };
 
 export default meta;
 
-export const Error = () => (
-  <Alert severity="error">This is an error alert</Alert>
-);
+export const Error = {
+  args: {
+    type: 'error',
+    children: 'This is an error alert',
+  },
+};
 
-export const Warning = () => (
-  <Alert severity="warning">This is a warning alert</Alert>
-);
+export const Info = {
+  args: {
+    type: 'info',
+    children: 'This is an info alert',
+  },
+};
 
-export const Info = () => <Alert severity="info">This is an info alert</Alert>;
+export const Success = {
+  args: {
+    type: 'success',
+    children: 'This is an success alert',
+  },
+};
 
-export const Success = () => (
-  <Alert severity="success">This is a success alert</Alert>
-);
+export const Warning = {
+  args: {
+    type: 'warning',
+    children: 'This is an warning alert',
+  },
+};
