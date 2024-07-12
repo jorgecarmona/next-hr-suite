@@ -1,4 +1,5 @@
 import React, {ChangeEvent} from 'react';
+
 import {iconLookup} from './icon-store';
 import {IconButton, InputAdornment, TextField, InputLabel} from '@mui/material';
 
@@ -27,15 +28,14 @@ function Password({
 }: PasswordProps) {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
-  function handleClickShowPassword() {
+  const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     onChangeCallback(e.target.value);
-  }
 
-  function renderPasswordIcon() {
+  const renderPasswordIcon = () => {
     if (icon) {
       return (
         <InputAdornment position="end">
@@ -54,7 +54,7 @@ function Password({
       );
     }
     return null;
-  }
+  };
 
   let newHelperText = helperText;
 
