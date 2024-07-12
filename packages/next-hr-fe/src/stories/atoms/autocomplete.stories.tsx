@@ -1,30 +1,39 @@
 import {Meta, StoryObj} from '@storybook/react';
-
 import {Autocomplete} from '../../atoms';
-
 type Story = StoryObj<typeof Autocomplete>;
-
 export default {
   title: 'Atoms/Autocomplete',
   component: Autocomplete,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+  },
+  tags: ['autodocs'],
+  args: {
+    label: '',
+    value: '',
+    error: true,
+    errorHelperText: '',
+    helperText: '',
+    required: true,
   },
 } as Meta<typeof Autocomplete>;
 
 export const Default: Story = {
   args: {
-    id: 'my-id',
-    value: 'English',
-    options: [{label: 'English', value: 'english'}],
+    value: '',
+    options: [
+      {label: 'English', value: 'english'},
+      {label: 'Spanish', value: 'spanish'},
+      {label: 'French', value: 'french'},
+      {label: 'German', value: 'german'},
+      {label: 'Chinese', value: 'chinese'},
+    ],
   },
 };
 
 export const HintText: Story = {
   args: {
-    id: 'my-id',
-    value: 'Option 2',
+    value: '',
     options: [{label: 'City of Residence', value: 'cityOfResidence'}],
     helperText: 'This is a hint to help user.',
     label: 'Rule',
@@ -34,7 +43,6 @@ export const HintText: Story = {
 
 export const RequiredWithErrors: Story = {
   args: {
-    id: 'my-id',
     value: '',
     options: [{label: 'City of Residence', value: 'cityOfResidence'}],
     helperText: 'This is a hint to help user.',
