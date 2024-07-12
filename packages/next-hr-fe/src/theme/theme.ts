@@ -132,30 +132,51 @@ const nextHrTheme = createTheme({
           '&.pending': {
             backgroundColor: '#EFF8FF',
             color: '#175CD3',
+            '& .MuiChip-deleteIcon': {
+              color: '#175CD3',
+            },
           },
           '&.open': {
             backgroundColor: '#F4F3FF',
             color: '#5925DC',
+            '& .MuiChip-deleteIcon': {
+              color: '#5925DC',
+            },
           },
           '&.approved': {
             backgroundColor: '#ECFDF3',
             color: '#027A48',
+            '& .MuiChip-deleteIcon': {
+              color: '#027A48',
+            },
           },
           '&.denied': {
             backgroundColor: '#FEF3F2',
             color: '#B42318',
+            '& .MuiChip-deleteIcon': {
+              color: '#B42318',
+            },
           },
           '&.enabled': {
             borderColor: '#027A48',
             color: '#027A48',
+            '& .MuiChip-deleteIcon': {
+              color: '#027A48',
+            },
           },
           '&.rejected': {
             borderColor: '#D92D20',
             color: '#D92D20',
+            '& .MuiChip-deleteIcon': {
+              color: '#D92D20',
+            },
           },
           '&.disabled': {
             borderColor: '#E7A63F',
             color: '#E7A63F',
+            '& .MuiChip-deleteIcon': {
+              color: '#E7A63F',
+            },
           },
           '&.default': {
             backgroundColor: '#EAECF0',
@@ -167,7 +188,6 @@ const nextHrTheme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          cursor: 'pointer',
           fontFamily: 'Poppins',
           fontWeightMedium: 400,
           fontSize: '16px',
