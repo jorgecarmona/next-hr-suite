@@ -1,15 +1,15 @@
 import {Meta, StoryObj} from '@storybook/react';
 
-import {PasswordTextField} from '../../atoms';
+import Password from '../../atoms/password';
 
 const meta = {
-  title: 'Atoms/PasswordTextField',
-  component: PasswordTextField,
+  title: 'Atoms/Password',
+  component: Password,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof PasswordTextField>;
+} satisfies Meta<typeof Password>;
 
 export default meta;
 

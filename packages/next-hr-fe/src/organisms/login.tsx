@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert, Autocomplete} from '../atoms';
 import Typography from '../atoms/typography';
 import TextField from '../atoms/textField';
-import PasswordTextField from '../atoms/password-textfield';
+import PasswordTextField from '../atoms/password';
 import Button, {ButtonType} from '../atoms/button';
 import Link from '../atoms/link';
 import useIsMobile from '../hooks/use-is-mobile';

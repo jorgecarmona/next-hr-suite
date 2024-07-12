@@ -1,22 +1,16 @@
 import {render, screen} from '@testing-library/react';
 
-import PasswordTextField from '../../atoms/password-textfield';
+import Password from '../../atoms/password';
 
 import userEvent from '@testing-library/user-event';
 
-describe('PasswordTextField', () => {
+describe('Password', () => {
   it('renders without crashing', () => {
-    render(
-      <PasswordTextField
-        label="Password"
-        value=""
-        onChangeCallback={() => {}}
-      />,
-    );
+    render(<Password label="Password" value="" onChangeCallback={() => {}} />);
   });
   it('renders type default', () => {
     render(
-      <PasswordTextField
+      <Password
         label="Password"
         value=""
         onChangeCallback={() => {}}
@@ -32,7 +26,7 @@ describe('PasswordTextField', () => {
   });
   it('renders password with error', () => {
     render(
-      <PasswordTextField
+      <Password
         label="Password"
         value=""
         onChangeCallback={() => {}}
@@ -51,7 +45,7 @@ describe('PasswordTextField', () => {
   });
   it('renders password with icon', async () => {
     render(
-      <PasswordTextField
+      <Password
         label="Password"
         value=""
         onChangeCallback={() => {}}
@@ -71,7 +65,7 @@ describe('PasswordTextField', () => {
     const newPassword = 'hola';
 
     render(
-      <PasswordTextField
+      <Password
         label="Password"
         value=""
         onChangeCallback={handlePasswordMock}
