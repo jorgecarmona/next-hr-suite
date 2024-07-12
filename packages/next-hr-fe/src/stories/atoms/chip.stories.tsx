@@ -24,14 +24,24 @@ const meta: Meta = {
   args: {
     type: 'default',
     label: 'Default Chip',
-    onDelete: fn(),
-    onclick: fn(),
+    deletable: true,
+    onClick: fn(),
+    // onDelete: fn(),
   },
 };
 
 type Story = StoryObj<typeof meta>;
 
 export default meta;
+
+export const NotDeletable: Story = {
+  args: {
+    type: 'default',
+    label: 'Default',
+    deletable: false,
+    onClick: action('chip was clicked'),
+  },
+};
 
 export const Pending: Story = {
   args: {
