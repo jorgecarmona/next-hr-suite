@@ -1,11 +1,10 @@
 import React from 'react';
-
 import {
   Avatar as MuiAvatar,
   AvatarProps as MuiAvatarProps,
 } from '@mui/material';
 
-export interface ProfileAvatarProps extends MuiAvatarProps {
+interface ProfileAvatarProps extends MuiAvatarProps {
   alt?: never;
   children: React.ReactNode;
   height?: never;
@@ -35,12 +34,17 @@ function Avatar({
   src,
   type,
   width = 400,
-}: AvatarProps) {
+}: AvatarProps): JSX.Element {
   const sxProps = type === 'profile' ? {} : {width, height};
   const classname = type === 'profile' ? 'profile' : '';
 
   return (
-    <MuiAvatar alt={alt} src={src} sx={sxProps} className={classname}>
+    <MuiAvatar
+      alt={alt}
+      src={type === 'profile' ? undefined : src}
+      sx={sxProps}
+      className={classname}
+    >
       {type === 'profile' ? children : null}
     </MuiAvatar>
   );
