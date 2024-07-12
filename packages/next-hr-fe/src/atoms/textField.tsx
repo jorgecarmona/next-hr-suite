@@ -2,12 +2,12 @@ import {ChangeEvent} from 'react';
 
 import {
   TextField as MuiTextField,
-  IconButton,
   InputAdornment,
   InputLabel,
 } from '@mui/material';
 import {iconLookup} from './icon-store';
 
+import '../styles/app.css';
 interface TextFieldProps {
   error?: boolean;
   fullWidth?: boolean;
@@ -37,28 +37,25 @@ function TextField({
     if (icon) {
       return (
         <InputAdornment position="start">
-          <IconButton edge="start">{<iconLookup.email />}</IconButton>
+          <iconLookup.email />
         </InputAdornment>
       );
     }
     return null;
   };
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     onChangeTextField(e.target.value);
 
   return (
-    <>
+    <div style={{display: 'flex', flexDirection: 'column'}}>
       <InputLabel
         htmlFor="TextField"
-        required={false}
-        style={{paddingLeft: '10px'}}
+        className={required ? 'required-field' : undefined}
       >
-        {label} {required && <span style={{color: 'red'}}>*</span>}
+        {label}
       </InputLabel>
       <MuiTextField
         fullWidth={fullWidth}
-        style={{backgroundColor: readOnly ? '#eeeeee' : 'transparent'}}
         id="TextField"
         size="small"
         value={value}
@@ -66,12 +63,13 @@ function TextField({
         placeholder={placeholder}
         error={error}
         helperText={helperText}
+        style={{backgroundColor: readOnly ? '#eeeeee' : 'transparent'}}
+        disabled={readOnly}
         InputProps={{
           startAdornment: renderEmailIcon(),
-          readOnly: readOnly,
         }}
       />
-    </>
+    </div>
   );
 }
 
