@@ -1,5 +1,4 @@
 import type {Meta, StoryObj} from '@storybook/react';
-
 import {Card} from '../../atoms';
 import {iconLookup} from '../../atoms/icon-store';
 import {CardHeader, IconButton} from '@mui/material';
@@ -21,22 +20,8 @@ const meta = {
       description: 'Selects border color',
     },
     header: {
-      options: ['Node', 'String'],
-      mapping: {
-        Node: (
-          <CardHeader
-            avatar={<iconLookup.business />}
-            action={
-              <IconButton>
-                <iconLookup.add />
-              </IconButton>
-            }
-            title="Header with type node"
-          />
-        ),
-        String: 'Header with type string',
-      },
-      description: 'Options for the header type',
+      control: 'text',
+      description: 'Header text',
     },
     content: {
       control: 'text',
@@ -79,28 +64,6 @@ export const CardWithHeaderTitle: Story = {
           'This story display a card styled with the background color `#FFFFFF`, and the border color `#EAECF0`. Change the values from the controls to see different styles.',
       },
     },
-  },
-};
-
-export const CardWithHeaderNode: Story = {
-  args: {
-    bgColor: '#EAEFF6',
-    borderColor: '#D4DFEF',
-    header: (
-      <>
-        <CardHeader
-          avatar={<iconLookup.business />}
-          action={
-            <IconButton>
-              <iconLookup.add />
-            </IconButton>
-          }
-          title="Card Header"
-        />
-      </>
-    ),
-    content: 'Card Content',
-    footer: 'Card Footer',
   },
 };
 
