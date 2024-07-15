@@ -23,7 +23,7 @@ const meta = {
   argTypes: {
     icon: {
       control: 'select',
-      options: ['no icon', ...Object.values(IconType)], // Provide the values from the IconType enum
+      options: ['no icon', ...Object.values(IconType)],
       description: 'Selects icon to display',
     },
     buttonType: {
