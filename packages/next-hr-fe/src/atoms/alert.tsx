@@ -3,12 +3,12 @@ import React from 'react';
 import {Alert as MuiAlert, AlertTitle as MuiAlertTitle} from '@mui/material';
 
 interface AlertProps {
-  severity: 'error' | 'info' | 'success' | 'warning';
+  type: 'error' | 'info' | 'success' | 'warning';
   onClose?: () => void;
   children?: React.ReactNode;
 }
 
-function Alert({severity, onClose, children}: AlertProps) {
+function Alert({type, onClose, children}: AlertProps) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -20,8 +20,8 @@ function Alert({severity, onClose, children}: AlertProps) {
 
   if (!open) return null;
 
-  const AlertTitle = (severity: 'error' | 'info' | 'success' | 'warning') => {
-    switch (severity) {
+  const AlertTitle = (type: 'error' | 'info' | 'success' | 'warning') => {
+    switch (type) {
       case 'error':
         return 'Error';
       case 'info':
@@ -36,8 +36,16 @@ function Alert({severity, onClose, children}: AlertProps) {
   };
 
   return (
-    <MuiAlert onClose={handleClose} severity={severity}>
-      <MuiAlertTitle>{AlertTitle(severity)}</MuiAlertTitle>
+    <MuiAlert
+      onClose={handleClose}
+      severity={type}
+      sx={{
+        '& .MuiAlertTitle-root': {
+          fontWeight: 'bold',
+        },
+      }}
+    >
+      <MuiAlertTitle>{AlertTitle(type)}</MuiAlertTitle>
       {children}
     </MuiAlert>
   );
