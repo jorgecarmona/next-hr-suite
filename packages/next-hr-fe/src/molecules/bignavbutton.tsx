@@ -17,7 +17,7 @@ interface BigNavButtonProps {
   title?: string;
 }
 
-export default function BigNavButton({
+function BigNavButton({
   bgColor,
   customColor,
   icon,
@@ -67,3 +67,5 @@ export default function BigNavButton({
     </Button>
   );
 }
+
+export default BigNavButton;
