@@ -9,6 +9,7 @@ function ToolbarButton({
   selected,
   disabled,
   fullWidth,
+  buttonType,
 }: ButtonProps) {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target instanceof HTMLButtonElement && onClick) {
@@ -28,6 +29,7 @@ function ToolbarButton({
         selected={selected}
         disabled={disabled}
         fullWidth={fullWidth}
+        buttonType={buttonType}
       >
         {children}
       </Button>
