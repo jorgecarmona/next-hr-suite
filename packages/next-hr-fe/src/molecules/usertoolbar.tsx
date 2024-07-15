@@ -7,11 +7,18 @@ import {ButtonType} from '../atoms/button';
 import {Menu, MenuItem} from '@mui/material';
 import {ProfileAvatarProps} from '../atoms/avatar';
 
-function UserToolBar({children, type}: ProfileAvatarProps) {
+function UserToolBar({
+  children,
+  type,
+  onClickCallback,
+}: ProfileAvatarProps & {onClickCallback: (value: string) => void}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (onClickCallback) {
+      onClickCallback('button');
+    }
     setAnchorEl(event.currentTarget);
   };
 

@@ -1,4 +1,5 @@
+import HeaderHome from './header-home';
 import Login from './login';
 import SignUp from './signup';
 
-export {Login, SignUp};
+export {HeaderHome, Login, SignUp};
