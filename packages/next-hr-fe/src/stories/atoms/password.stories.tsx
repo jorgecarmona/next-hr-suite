@@ -9,6 +9,19 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    label: '',
+    value: '',
+    helperText: '',
+    onChangeCallback: (value: string) => {
+      console.log('passeord entered:', value);
+    },
+    error: false,
+    errorHelperText: '',
+    fullWidth: false,
+    icon: true,
+    required: true,
+  },
 } satisfies Meta<typeof PasswordTextField>;
 
 export default meta;
