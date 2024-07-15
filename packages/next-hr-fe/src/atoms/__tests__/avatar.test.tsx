@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Avatar from '../../atoms/avatar';
+import Avatar from '../avatar';
 
 describe('Avatar component', () => {
   test('renders without crashing', () => {
