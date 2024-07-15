@@ -14,18 +14,18 @@ describe('Alert component', () => {
       'warning',
     ];
 
-    alertTypes.forEach((type) => {
-      render(<Alert type={type}>Test {type} message</Alert>);
+    alertTypes.forEach((severity) => {
+      render(<Alert severity={severity}>Test {severity} message</Alert>);
       expect(
-        screen.getByText(type.charAt(0).toUpperCase() + type.slice(1)),
+        screen.getByText(severity.charAt(0).toUpperCase() + severity.slice(1)),
       ).toBeInTheDocument();
-      expect(screen.getByText(`Test ${type} message`)).toBeInTheDocument();
+      expect(screen.getByText(`Test ${severity} message`)).toBeInTheDocument();
       cleanup();
     });
   });
 
   it('closes the alert when the close button is clicked', () => {
-    render(<Alert type="error">Test error message</Alert>);
+    render(<Alert severity="error">Test error message</Alert>);
 
     expect(screen.getByText('Error')).toBeInTheDocument();
     expect(screen.getByText('Test error message')).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('Alert component', () => {
   it('calls the onClose callback when the alert is closed', () => {
     const onCloseMock = jest.fn();
     render(
-      <Alert type="info" onClose={onCloseMock}>
+      <Alert severity="info" onClose={onCloseMock}>
         Test info message
       </Alert>,
     );
@@ -53,13 +53,13 @@ describe('Alert component', () => {
 
   it('does not render anything when open state is false', () => {
     const {rerender} = render(
-      <Alert type="success">Test success message</Alert>,
+      <Alert severity="success">Test success message</Alert>,
     );
 
     expect(screen.getByText('Success')).toBeInTheDocument();
     expect(screen.getByText('Test success message')).toBeInTheDocument();
 
-    rerender(<Alert type="success">Test success message</Alert>);
+    rerender(<Alert severity="success">Test success message</Alert>);
     const closeButton = screen.getByRole('button');
     fireEvent.click(closeButton);
 
