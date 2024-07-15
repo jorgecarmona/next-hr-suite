@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {ToolbarButton} from '../../atoms';
 import {IconType} from '../../atoms/icon-store';
+import {ButtonType} from '../../atoms/button';
 
 const meta = {
   title: 'Atoms/ToolbarButton',
@@ -15,14 +16,21 @@ const meta = {
     icon: IconType.Add,
     onClick: action('breadcrumb was clicked') as any,
     selected: false,
-    type: 'button',
     disabled: false,
     fullWidth: false,
+    buttonType: ButtonType.Primary,
   },
   argTypes: {
-    icon: {control: 'radio', options: Object.values(IconType)},
+    icon: {
+      control: 'select',
+      options: ['no icon', ...Object.values(IconType)], // Provide the values from the IconType enum
+      description: 'Selects icon to display',
+    },
+    buttonType: {
+      control: 'select',
+      options: ['no type', ...Object.values(ButtonType)],
+    },
     selected: {control: 'boolean'},
-    type: {control: 'select', options: ['button', 'submit', 'reset']},
     disabled: {control: 'boolean'},
     fullWidth: {control: 'boolean'},
   },
@@ -37,7 +45,7 @@ export const DefaultToolbarButton: Story = {
     children: 'Default',
     icon: IconType.Library,
     onClick: action('button was clicked'),
-    type: 'button',
+    buttonType: ButtonType.Text,
     disabled: false,
     fullWidth: false,
   },
@@ -49,7 +57,7 @@ export const SelectedToolbarButton: Story = {
     icon: IconType.Library,
     onClick: action('button was clicked'),
     selected: true,
-    type: 'button',
+    buttonType: ButtonType.Secondary,
     disabled: false,
     fullWidth: false,
   },
@@ -60,7 +68,7 @@ export const DisabledToolbarButton: Story = {
     children: 'Disabled',
     icon: IconType.Library,
     onClick: action('button was clicked'),
-    type: 'button',
+    buttonType: ButtonType.Outlined,
     disabled: true,
     fullWidth: false,
   },
@@ -74,5 +82,27 @@ export const FullWidthToolbarButton: Story = {
     type: 'button',
     disabled: false,
     fullWidth: true,
+  },
+};
+
+export const TertiaryToolbarButton: Story = {
+  args: {
+    children: 'Tertiary',
+    icon: IconType.Library,
+    onClick: action('button was clicked'),
+    buttonType: ButtonType.Tertiary,
+    disabled: false,
+    fullWidth: false,
+  },
+};
+
+export const ProfileToolbarButton: Story = {
+  args: {
+    children: 'Profile',
+    icon: IconType.Library,
+    onClick: action('button was clicked'),
+    buttonType: ButtonType.Profile,
+    disabled: false,
+    fullWidth: false,
   },
 };
