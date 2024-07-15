@@ -4,7 +4,7 @@ import Alert from '../../atoms/alert';
 import {action} from '@storybook/addon-actions';
 
 type AlertProps = {
-  type: 'error' | 'info' | 'success' | 'warning';
+  severity: 'error' | 'info' | 'success' | 'warning';
   children: React.ReactNode;
 };
 
@@ -16,7 +16,7 @@ const meta: Meta<AlertProps> = {
     layout: 'centered',
   },
   argTypes: {
-    type: {
+    severity: {
       control: 'select',
       options: ['error', 'info', 'success', 'warning'],
     },
@@ -27,7 +27,7 @@ export default meta;
 
 export const Error = {
   args: {
-    type: 'error',
+    severity: 'error',
     children: 'This is an error alert',
     onClose: action('onClose was called'),
   },
@@ -35,7 +35,7 @@ export const Error = {
 
 export const Info = {
   args: {
-    type: 'info',
+    severity: 'info',
     children: 'This is an info alert',
     onClose: action('onClose was called'),
   },
@@ -43,7 +43,7 @@ export const Info = {
 
 export const Success = {
   args: {
-    type: 'success',
+    severity: 'success',
     children: 'This is an success alert',
     onClose: action('onClose was called'),
   },
@@ -51,7 +51,7 @@ export const Success = {
 
 export const Warning = {
   args: {
-    type: 'warning',
+    severity: 'warning',
     children: 'This is an warning alert',
     onClose: action('onClose was called'),
   },
