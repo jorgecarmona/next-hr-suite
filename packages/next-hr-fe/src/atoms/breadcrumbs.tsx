@@ -2,20 +2,16 @@ import {
   Breadcrumbs as MuiBreadcrumbs,
   BreadcrumbsProps as MuiBreadcrumbsProps,
 } from '@mui/material';
-
 import Link from '@mui/material/Link';
-
 interface NavigationItem {
   label?: string;
   path?: string;
 }
-
 interface BreadcrumbProps extends MuiBreadcrumbsProps {
   separator?: string | JSX.Element;
   items: NavigationItem[];
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
-
 function BreadCrumbs({separator = '>', items, onClick}: BreadcrumbProps) {
   if (items.length === 0) {
     return null;
@@ -29,7 +25,6 @@ function BreadCrumbs({separator = '>', items, onClick}: BreadcrumbProps) {
       onClick(event);
     }
   };
-
   return (
     <MuiBreadcrumbs
       separator={separator}
@@ -44,7 +39,11 @@ function BreadCrumbs({separator = '>', items, onClick}: BreadcrumbProps) {
             href={isLast ? undefined : item.path ?? '#'}
             underline="hover"
             color="inherit"
-            style={isLast ? {pointerEvents: 'none', cursor: 'default'} : {}}
+            style={
+              isLast
+                ? {pointerEvents: 'none', cursor: 'default', fontWeight: 'bold'}
+                : {}
+            }
           >
             {item.label}
           </Link>
@@ -53,5 +52,4 @@ function BreadCrumbs({separator = '>', items, onClick}: BreadcrumbProps) {
     </MuiBreadcrumbs>
   );
 }
-
 export default BreadCrumbs;
