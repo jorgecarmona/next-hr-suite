@@ -36,7 +36,15 @@ function Alert({severity, onClose, children}: AlertProps) {
   };
 
   return (
-    <MuiAlert onClose={handleClose} severity={severity}>
+    <MuiAlert
+      onClose={handleClose}
+      severity={severity}
+      sx={{
+        '& .MuiAlertTitle-root': {
+          fontWeight: 'bold',
+        },
+      }}
+    >
       <MuiAlertTitle>{AlertTitle(severity)}</MuiAlertTitle>
       {children}
     </MuiAlert>
