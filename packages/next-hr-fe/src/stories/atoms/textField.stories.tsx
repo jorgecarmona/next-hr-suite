@@ -5,9 +5,23 @@ import TextField from '../../atoms/textField';
 const meta = {
   title: 'Atoms/TextField',
   component: TextField,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+  },
+  tags: ['autodocs'],
+  args: {
+    label: '',
+    value: '',
+    fullWidth: true,
+    onChangeTextField: (value: string) => {
+      console.log('TextField entered:', value);
+    },
+    error: false,
+    helperText: '',
+    icon: false,
+    placeholder: '',
+    readOnly: false,
+    required: false,
   },
 } satisfies Meta<typeof TextField>;
 
@@ -20,7 +34,7 @@ export const Default: Story = {
     label: 'Name',
     value: 'Massachusetts Paid Family & Medical Leave',
     fullWidth: true,
-    onChangeTextField(value) {
+    onChangeTextField: (value) => {
       console.log('TextField entered:', value);
     },
   },
@@ -32,7 +46,7 @@ export const IconTextField: Story = {
     value: '',
     icon: true,
     placeholder: 'Enter your email here',
-    onChangeTextField(value) {
+    onChangeTextField: (value) => {
       console.log('TextField entered:', value);
     },
   },
@@ -43,7 +57,7 @@ export const ReadOnlyTextField: Story = {
     label: 'Code',
     value: 'PF-ML',
     readOnly: true,
-    onChangeTextField(value) {
+    onChangeTextField: (value) => {
       console.log('TextField entered:', value);
     },
   },
@@ -56,7 +70,7 @@ export const ErrorsTextField: Story = {
     error: true,
     helperText: 'This field is required',
     required: true,
-    onChangeTextField(value) {
+    onChangeTextField: (value) => {
       console.log('TextField entered:', value);
     },
   },
