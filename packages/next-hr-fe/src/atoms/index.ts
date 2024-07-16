@@ -8,7 +8,7 @@ import Chip from './chip';
 import Grid from './grid';
 import Icon from './icon';
 import Link from './link';
-import PasswordTextField from './password-textfield';
+import Password from './password';
 import TextField from './textField';
 import ToolbarButton from './toolbar-button';
 import Typography from './typography';
@@ -24,7 +24,7 @@ export {
   Grid,
   Icon,
   Link,
-  PasswordTextField,
+  Password,
   TextField,
   ToolbarButton,
   Typography,

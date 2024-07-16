@@ -1,14 +1,7 @@
 import React from 'react';
 
 import {ButtonType} from '../atoms/button';
-import {
-  Alert,
-  Button,
-  Link,
-  PasswordTextField,
-  TextField,
-  Typography,
-} from '../atoms';
+import {Alert, Button, Link, Password, TextField, Typography} from '../atoms';
 
 import useIsMobile from '../hooks/use-is-mobile';
 
@@ -80,7 +73,7 @@ function SignUp({onLogin}: LoginProps) {
               fullWidth
             />
           </div>
-          <PasswordTextField
+          <Password
             label="Password"
             value={password}
             onChangeCallback={handlePasswordChange}
@@ -88,7 +81,7 @@ function SignUp({onLogin}: LoginProps) {
             icon
             fullWidth
           />
-          <PasswordTextField
+          <Password
             label="Confirm Password"
             value={confirmPassword}
             onChangeCallback={handleConfirmPasswordChange}

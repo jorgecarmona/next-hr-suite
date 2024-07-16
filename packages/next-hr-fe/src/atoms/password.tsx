@@ -15,7 +15,7 @@ interface PasswordProps {
   value: string;
 }
 
-function PasswordTextField({
+function Password({
   fullWidth = false,
   label,
   onChangeCallback,
@@ -89,4 +89,4 @@ function PasswordTextField({
   );
 }
 
-export default PasswordTextField;
+export default Password;
