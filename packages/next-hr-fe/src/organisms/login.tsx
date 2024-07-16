@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert, Autocomplete} from '../atoms';
 import Typography from '../atoms/typography';
 import TextField from '../atoms/textField';
-import PasswordTextField from '../atoms/password-textfield';
+import Password from '../atoms/password';
 import Button, {ButtonType} from '../atoms/button';
 import Link from '../atoms/link';
 import useIsMobile from '../hooks/use-is-mobile';
@@ -87,7 +87,7 @@ function Login({onLogin, severity}: LoginProps) {
               fullWidth
             />
           </div>
-          <PasswordTextField
+          <Password
             label="Password"
             value={password}
             onChangeCallback={handlePasswordChange}
