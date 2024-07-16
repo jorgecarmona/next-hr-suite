@@ -132,7 +132,6 @@ function Login({onLogin, severity}: LoginProps) {
         </div>
         <div style={{width: '100%', marginTop: '24px'}}>
           <Autocomplete
-            id="my-id"
             options={[
               {
                 label: 'English',

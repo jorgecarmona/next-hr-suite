@@ -22,7 +22,7 @@ const meta = {
     icon: true,
     required: true,
   },
-} satisfies Meta<typeof PasswordTextField>;
+} satisfies Meta<typeof Password>;
 
 export default meta;
 
