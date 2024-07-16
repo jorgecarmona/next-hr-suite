@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Card as MuiCard,
   CardActions,
@@ -36,7 +35,7 @@ function Card({
       >
         {newHeader}
         <CardContent>{content}</CardContent>
-        <CardActions>{footer}</CardActions>
+        {footer && <CardActions>{footer}</CardActions>}
       </MuiCard>
     </>
   );
